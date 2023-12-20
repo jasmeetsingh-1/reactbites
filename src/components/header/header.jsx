@@ -11,7 +11,12 @@ function Header() {
         </div>
         <div className="header-button-holder">
           <button className="header-buttons-navbar">Login/Signup</button>
-          <button className="header-buttons-navbar">Your Cart</button>
+          <button className="header-buttons-navbar">
+            Your Cart
+            <span className="cart-items-header">
+              10
+            </span>
+            </button>
         </div>
       </div>
       <div className="main-image">
