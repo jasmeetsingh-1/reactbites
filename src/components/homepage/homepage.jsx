@@ -21,24 +21,31 @@ export default function HomePage() {
               </div>
             );
           })}
-
-          {/* <div className="home-page-menu-items">
-            <span>Soups (20)</span>
-          </div>
-          <div className="home-page-menu-items">
-            <span>Burgers (9)</span>
-          </div>
-          <div className="home-page-menu-items">
-            <span>Pizza (11)</span>
-          </div>
-          <div className="home-page-menu-items">
-            <span>Bowls (12)</span>
-          </div>
-          <div className="home-page-menu-items">
-            <span>Desserts (5)</span>
-          </div> */}
         </div>
-        <div>Content holder</div>
+
+        {/* content div  */}
+        <div className="content-div">
+          <div className="MealItem-holder-div">
+            <div className="green-border">
+              <div className="meal-item-name">Bombay Toasty Burger</div>
+              <div className="meal-item-description">
+                Multigrain Bread Roast Beet , Potato Onion, Marinated Cucumber
+              </div>
+              <div className="meal-item-amount">₹485.00</div>
+            </div>
+            <div className="red-border">
+              <form>
+                <div className="input-label-field">
+                  <label htmlFor="mealsQuantity">Quantity</label>
+                  <input id="mealsQuantity" name="mealsQuantity" />
+                </div>
+                <div>
+                  <button type="submit"> + Add </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

@@ -5,8 +5,8 @@
   background-color: #d1c6c1;
   width: 70%;
   margin: 2rem auto;
-  /* height: fit-content; */
-  height: 1500px;
+  height: fit-content;
+  /* height: 1500px; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,9 +34,9 @@
   box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.5) inset;
 }
 
-.home-page-menu-items:focus{
+.home-page-menu-items:focus {
   cursor: pointer;
-  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.50) inset;
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.5) inset;
 }
 
 .home-page-menu-items > span {
@@ -45,4 +45,55 @@
   font-size: 22px;
   font-weight: 700;
   line-height: normal;
+}
+
+.content-div {
+  margin-top: 10px;
+  width: 90%;
+}
+
+.MealItem-holder-div {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 0px;
+}
+
+.meal-item-name {
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.meal-item-description {
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 19px;
+  font-style: italic;
+  font-weight: 500;
+  line-height: normal;
+  margin: 5px 0px;
+  max-width: 90%;
+}
+
+.meal-item-amount {
+  color: #962000;
+  font-size: 1.3rem;
+  font-style: normal;
+  line-height: normal;
+}
+
+.input-label-field {
+  border: none;
+}
+
+.input-label-field > input:active {
+  outline: none;
+}
+
+.red-border {
+  border: 1px solid red;
+}
+
+.green-border {
+  border: 1px solid green;
 }
