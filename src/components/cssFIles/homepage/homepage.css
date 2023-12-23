@@ -24,7 +24,6 @@
 .home-page-menu-items {
   border-radius: 20px;
   background: rgba(231, 72, 0, 0.53);
-  background: color(display-p3 0.8378 0.3297 0.1318 / 0.53);
   width: fit-content;
   padding: 20px 26px;
 }
@@ -34,11 +33,10 @@
   box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.5) inset;
 }
 
-.home-page-menu-items:focus {
+.home-page-menu-items-focus {
   cursor: pointer;
   box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.5) inset;
 }
-
 .home-page-menu-items > span {
   color: #fff;
   color: color(display-p3 1 1 1);
@@ -55,7 +53,8 @@
 .MealItem-holder-div {
   display: flex;
   justify-content: space-between;
-  margin: 30px 0px;
+  margin: 7px 0px;
+  padding: 20px;
 }
 
 .meal-item-name {
@@ -84,10 +83,64 @@
 
 .input-label-field {
   border: none;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.right-div-mealitems {
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+  padding: 0px 10px;
+  /* max-width: 10%; */
+}
+
+.input-label-field > input {
+  width: 53px;
+  height: 27px;
+  border-radius: 4px;
+  background: #fff;
+  border: none;
+  outline: none;
+}
+
+.input-label-field > label {
+  color: #000;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding: 5px 8px;
 }
 
 .input-label-field > input:active {
   outline: none;
+}
+
+.submit-button-holder > button {
+  width: 133px;
+  /* max-width: 10%; */
+  height: 32px;
+  border-radius: 11px;
+  background: #962000;
+  color: #fff;
+  text-align: center;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  outline: none;
+  border: none;
+}
+
+.submit-button-holder > button:hover {
+  cursor: pointer;
+}
+
+.submit-button-holder {
+  display: flex;
+  justify-content: center;
+  margin-top: 2px;
 }
 
 .red-border {
