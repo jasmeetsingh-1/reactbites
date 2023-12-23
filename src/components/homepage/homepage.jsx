@@ -56,6 +56,8 @@ export default function HomePage() {
                     <div className="input-label-field">
                       <label htmlFor="mealsQuantity">Quantity</label>
                       <input
+                        min={1}
+                        max={10}
                         type="number"
                         id="mealsQuantity"
                         name="mealsQuantity"
