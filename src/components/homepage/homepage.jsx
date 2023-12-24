@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import Header from "../header/header";
+// import Header from "../header/header";
 import Meals from "../../assets/data/MealsContent";
 import { cartItemReducers } from "../redux-store/store";
 import { useDispatch } from "react-redux";
@@ -17,7 +17,7 @@ export default function HomePage() {
 
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <div className="main-home-page-container">
         <div className="outer-div-home-page-menu">
           {Object.keys(Meals).map((item) => {

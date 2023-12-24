@@ -4,7 +4,7 @@ import mealsImg from "../../assets/meals.jpg";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-function Header() {
+function Header(props) {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [totalCartItems, settotalCartItems] = useState(0);
@@ -50,6 +50,7 @@ function Header() {
           <button
             className="header-buttons-navbar"
             style={{ marginRight: "43px" }}
+            onClick={props.openCart}
           >
             Your Cart
             <span className="cart-items-header">{totalCartItems}</span>

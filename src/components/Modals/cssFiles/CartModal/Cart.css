@@ -1,0 +1,118 @@
+.cart-holder-cartfile {
+  background-color: #d3c6c0 !important;
+}
+
+.heading-div-cartfile > h4 {
+  color: rgba(0, 0, 0, 0.71);
+  font-size: 35px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  margin: 0 0 1rem 0;
+  text-align: center;
+}
+
+.total-amount-container-cartfile {
+  border-top: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  background: #d9d9d9;
+  padding: 24px 0px;
+}
+
+.total-amount-container-cartfile > p {
+  margin: 0px 0px 0px 2rem;
+  color: #000;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 600 !important;
+  line-height: normal;
+}
+
+.total-amount-container-cartfile > span {
+  color: #962000;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 600 !important;
+  line-height: normal;
+  margin-right: 1rem;
+}
+
+.buttons-container-cartfiles > button {
+  border-radius: 12px;
+  border: 1px solid #541904;
+  background: rgba(0, 0, 0, 0.08);
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.25);
+  padding: 9px 21px;
+  color: #541904;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin: 1rem 0rem 0rem 1rem;
+}
+
+.buttons-container-cartfiles {
+  display: flex;
+  justify-content: right;
+}
+
+.main-content-cartitem > div > p {
+  color: #000;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin: 0;
+}
+
+.main-content-cartitem > div > button {
+  border-radius: 12px;
+  border: 1px solid #541904;
+  background: rgba(217, 217, 217, 0.39);
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.25);
+  color: #000;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding: 0 0.6rem;
+  margin: 0.4rem 0 0 0.4rem;
+}
+
+.main-content-cartitem {
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+.amount-holder-cartitem {
+  width: min-content;
+  height: min-content;
+  border-radius: 12px;
+  background: #c0b4af;
+  padding: 6px 14px;
+  color: #000;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-left: 1rem;
+}
+.amount-cartitem {
+  color: #962000;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.Cart-items-holder-cartfile {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.cart-holder-cartfile button:hover {
+  cursor: pointer;
+}
