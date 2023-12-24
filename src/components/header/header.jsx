@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import "../cssFIles/header/header.css";
 import mealsImg from "../../assets/meals.jpg";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [totalCartItems, settotalCartItems] = useState(0);
   const loginData = useSelector((state) => state.loginStore);
@@ -34,7 +36,15 @@ function Header() {
           <h2>REACTBITES</h2>
         </div>
         <div className="header-button-holder">
-          <button className="header-buttons-navbar">
+          <button
+            className="header-buttons-navbar"
+            onClick={(e) => {
+              e.preventDefault();
+              if (!loginData.isloggedIn) {
+                navigate("/login");
+              }
+            }}
+          >
             {username ? `Hi, ${username}` : "Login/SignUp"}
           </button>
           <button
