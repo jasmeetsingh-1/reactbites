@@ -5,7 +5,9 @@ import { useSelector } from "react-redux";
 
 function Header() {
   const [username, setUsername] = useState("");
+  const [totalCartItems, settotalCartItems] = useState(0);
   const loginData = useSelector((state) => state.loginStore);
+  const cartItems = useSelector((state) => state.cartStore);
 
   const capitalizeFirstLetter = (str) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
@@ -17,6 +19,13 @@ function Header() {
       setUsername(capitalizedUsername);
     } else setUsername("");
   }, [loginData]);
+
+  useEffect(() => {
+    settotalCartItems(0);
+    cartItems.cart.map((item) => {
+      settotalCartItems((prev) => prev + item.amount);
+    });
+  }, [cartItems]);
 
   return (
     <>
@@ -33,7 +42,7 @@ function Header() {
             style={{ marginRight: "43px" }}
           >
             Your Cart
-            <span className="cart-items-header">10</span>
+            <span className="cart-items-header">{totalCartItems}</span>
           </button>
         </div>
       </div>

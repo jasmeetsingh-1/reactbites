@@ -1,10 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Header from "../header/header";
-import "../cssFIles/homepage/homepage.css";
 import Meals from "../../assets/data/MealsContent";
+import { cartItemReducers } from "../redux-store/store";
+import { useDispatch } from "react-redux";
+
+import "../cssFIles/homepage/homepage.css";
 
 export default function HomePage() {
+  const [inputState, setInputState] = useState(1);
+  const dispatch = useDispatch();
   const [indexMealItem, setIndexMealItem] = useState("soup");
+
   const capitalizeFirstLetter = (str) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
   };
@@ -51,6 +57,13 @@ export default function HomePage() {
                   <form
                     onSubmit={(e) => {
                       e.preventDefault();
+                      const payload = {
+                        id: item.id,
+                        name: item.name,
+                        amount: parseInt(inputState, 10),
+                        price: item.price,
+                      };
+                      dispatch(cartItemReducers.cartItemsAdded(payload));
                     }}
                   >
                     <div className="input-label-field">
@@ -58,9 +71,14 @@ export default function HomePage() {
                       <input
                         min={1}
                         max={10}
+                        step={1}
+                        defaultValue={1}
                         type="number"
                         id="mealsQuantity"
                         name="mealsQuantity"
+                        onChange={(e) => {
+                          setInputState(e.target.value);
+                        }}
                       />
                     </div>
                     <div className="submit-button-holder">
