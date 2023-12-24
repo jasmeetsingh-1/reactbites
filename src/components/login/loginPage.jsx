@@ -11,7 +11,7 @@ function LoginPage() {
   const [loginForm, setloginForm] = useState(false);
   const [signUpForm, setsignUpForm] = useState(false);
   const signupData = useSelector((state) => state.signupStore.signupdata);
-  const loginData=useSelector((state)=>state.loginStore);
+  const loginData = useSelector((state) => state.loginStore);
 
   const [loginFormData, setLoginFormData] = useState({
     usernamelogin: "",
@@ -109,14 +109,14 @@ function LoginPage() {
         data.password === loginFormData.passwordlogin
       );
     });
-    
-    
+
     toast.success("Login Successful", toastConfig);
-    dispatch(loginReducers.loginButtonHandlerReducers({
-      status:true,
-      userdata:userdata,
-    }));
-    console.log("Login Form Data:", loginFormData);
+    dispatch(
+      loginReducers.loginButtonHandlerReducers({
+        status: true,
+        userdata: userdata,
+      })
+    );
 
     // setTimeout(() => {
     //   navigate("/");
@@ -210,16 +210,10 @@ function LoginPage() {
     });
     dispatch(signUpReducers.signupButtonHandlerReducer(signUpFormData));
     toast.success("Sign Up Successful", toastConfig);
-    console.log("SignUp Form:", signUpFormData);
     // setTimeout(() => {
     //   navigate("/");
     // }, 1800);
   }
-
-  useEffect(() => {
-    console.log("signupstate:", signupData);
-    console.log("logindata:", loginData);
-  }, [signupData,loginData]);
 
   return (
     <>

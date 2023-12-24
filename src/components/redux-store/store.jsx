@@ -55,6 +55,8 @@ const cartSlice = createSlice({
   initialState: cartItems,
   reducers: {
     cartItemsAdded(state, action) {
+      console.log("adding to cart:", state);
+
       const indexOFItem = state.cart.findIndex(
         (item) => item.id === action.payload.id
       );
@@ -72,8 +74,7 @@ const cartSlice = createSlice({
         updatedItems[indexOFItem] = newItem;
         const newTotalAmount =
           state.totalAmount + action.payload.price * action.payload.amount;
-        console.log("updated item made:", updatedItems);
-        console.log("updated Amount:", newTotalAmount);
+
         return {
           cart: updatedItems,
           totalAmount: newTotalAmount,
@@ -83,8 +84,38 @@ const cartSlice = createSlice({
         const updatedItems = state.cart.concat(action.payload);
         const newTotalAmount =
           state.totalAmount + action.payload.price * action.payload.amount;
-        console.log("updated item made:", updatedItems);
-        console.log("updated Amount:", newTotalAmount);
+
+        return {
+          cart: updatedItems,
+          totalAmount: newTotalAmount,
+        };
+      }
+    },
+    cartItemRemove(state, action) {
+      console.log("action payload", state.cart);
+      const indexOFItem = state.cart.findIndex(
+        (item) => item.id === action.payload.id
+      );
+      console.log(indexOFItem);
+      return;
+      const newTotalAmount = state.totalAmount - state.cart[indexOFItem].price;
+      if (state.cart[indexOFItem].amount === 1) {
+        //remove completed
+        const updatedItems = state.cart.filter(
+          (temp) => temp.id !== action.payload.id
+        );
+        return {
+          cart: updatedItems,
+          totalAmount: newTotalAmount,
+        };
+      } else {
+        //update the amount
+        let newItem = {
+          ...state.cart[indexOFItem],
+          amount: state.cart[indexOFItem].amount - 1,
+        };
+        const updatedItems = [...state.cart];
+        updatedItems[indexOFItem] = newItem;
         return {
           cart: updatedItems,
           totalAmount: newTotalAmount,

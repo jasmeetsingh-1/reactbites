@@ -21,7 +21,7 @@
 }
 
 .total-amount-container-cartfile > p {
-  margin: 0px 0px 0px 2rem;
+  margin: 0px 0px 0px 1rem;
   color: #000;
   font-size: 25px;
   font-style: normal;
@@ -55,6 +55,7 @@
 .buttons-container-cartfiles {
   display: flex;
   justify-content: right;
+  margin: 1rem 1rem 0.5rem 0.5rem;
 }
 
 .main-content-cartitem > div > p {
@@ -74,9 +75,9 @@
   color: #000;
   font-size: 16px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 800;
   line-height: normal;
-  padding: 0 0.6rem;
+  padding: 0.1rem 1rem;
   margin: 0.4rem 0 0 0.4rem;
 }
 
@@ -105,12 +106,13 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  margin-right: 1rem;
 }
 
 .Cart-items-holder-cartfile {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 2rem;
+  margin: 1rem 0rem 2rem 0rem;
 }
 
 .cart-holder-cartfile button:hover {

@@ -1,8 +1,10 @@
 import Modal from "../Modal";
 import "../cssFiles/CartModal/Cart.css";
-import { useSelector } from "react-redux";
+import { cartItemReducers } from "../../redux-store/store";
+import { useSelector, useDispatch } from "react-redux";
 
 function Cart(props) {
+  const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cartStore);
   return (
     <Modal className="cart-holder-cartfile" onClick={props.closeCart}>
@@ -10,14 +12,21 @@ function Cart(props) {
         <div className="heading-div-cartfile">
           <h4>Your Cart</h4>
         </div>
-        <div style={{ maxHeight: "11rem", overflow: "auto" }}>
+        <div style={{ maxHeight: "13rem", overflow: "auto" }}>
           {cartItems.cart.map((item) => {
             return (
               <div className="Cart-items-holder-cartfile">
                 <div className="main-content-cartitem">
                   <div>
                     <p>{item.name}</p>
-                    <button>-</button>
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        dispatch(cartItemReducers.cartItemRemove(item.id));
+                      }}
+                    >
+                      -
+                    </button>
                     <button>+</button>
                   </div>
                   <div className="amount-holder-cartitem">x{item.amount}</div>
