@@ -27,7 +27,20 @@ function Cart(props) {
                     >
                       -
                     </button>
-                    <button>+</button>
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        const payload = {
+                          id: item.id,
+                          name: item.name,
+                          amount: 1,
+                          price: item.price,
+                        };
+                        dispatch(cartItemReducers.cartItemsAdded(payload));
+                      }}
+                    >
+                      +
+                    </button>
                   </div>
                   <div className="amount-holder-cartitem">x{item.amount}</div>
                 </div>
@@ -41,8 +54,28 @@ function Cart(props) {
           <span>₹{cartItems.totalAmount}</span>
         </div>
         <div className="buttons-container-cartfiles">
-          <button>Close</button>
-          <button>Clear</button>
+          {cartItems.cart.length > 0 ? (
+            <>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  dispatch(cartItemReducers.cartItemClear());
+                }}
+              >
+                Clear
+              </button>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  props.closeCart();
+                }}
+              >
+                Close
+              </button>{" "}
+            </>
+          ) : (
+            ""
+          )}
           <button style={{ backgroundColor: "#541904", color: "white" }}>
             Order
           </button>
