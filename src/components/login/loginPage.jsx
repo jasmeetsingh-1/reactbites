@@ -317,6 +317,7 @@ function LoginPage() {
                         id="usernamelogin"
                         name="usernamelogin"
                         type="text"
+                        value={loginFormData.usernamelogin}
                         style={{ paddingLeft: "10px" }}
                         onChange={(e) => {
                           const usernameInput = e.target.value;
@@ -333,6 +334,7 @@ function LoginPage() {
                         id="passwordlogin"
                         name="passwordlogin"
                         type="password"
+                        value={loginFormData.passwordlogin}
                         style={{ paddingLeft: "10px" }}
                         onChange={(e) => {
                           const passwordinput = e.target.value;
@@ -392,6 +394,7 @@ function LoginPage() {
                         id="usernameSignup"
                         name="usernameSignup"
                         type="text"
+                        value={signUpFormData.username}
                         style={{ paddingLeft: "10px" }}
                         onChange={(e) => {
                           const usernameInput = e.target.value;
@@ -408,6 +411,7 @@ function LoginPage() {
                         id="name"
                         name="name"
                         type="text"
+                        value={signUpFormData.name}
                         style={{ paddingLeft: "10px" }}
                         onChange={(e) => {
                           const nameinput = e.target.value;
@@ -424,6 +428,7 @@ function LoginPage() {
                         id="email"
                         name="email"
                         type="text"
+                        value={signUpFormData.email}
                         style={{ paddingLeft: "10px" }}
                         onChange={(e) => {
                           const emailinput = e.target.value;
@@ -440,6 +445,7 @@ function LoginPage() {
                         id="passwordSignUp"
                         name="passwordSignUp"
                         type="password"
+                        value={signUpFormData.password}
                         style={{ paddingLeft: "10px" }}
                         onChange={(e) => {
                           const passwordinput = e.target.value;
@@ -458,6 +464,7 @@ function LoginPage() {
                         id="confirmpasswordSignup"
                         name="confirmpasswordSignup"
                         type="password"
+                        value={signUpFormData.confirmpassword}
                         style={{ paddingLeft: "10px" }}
                         onChange={(e) => {
                           const confirmpassword = e.target.value;
