@@ -3,13 +3,14 @@ import React, { useEffect, useRef, useState } from "react";
 import Meals from "../../assets/data/MealsContent";
 import { cartItemReducers } from "../redux-store/store";
 import { useDispatch } from "react-redux";
+import Footer from "../footer/footer";
 
 import "../cssFIles/homepage/homepage.css";
 
 export default function HomePage() {
   const [inputState, setInputState] = useState(1);
   const dispatch = useDispatch();
-  const [indexMealItem, setIndexMealItem] = useState("soup");
+  const [indexMealItem, setIndexMealItem] = useState("desserts");
 
   const capitalizeFirstLetter = (str) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
@@ -91,6 +92,7 @@ export default function HomePage() {
           })}
         </div>
       </div>
+      <Footer />
     </>
   );
 }
