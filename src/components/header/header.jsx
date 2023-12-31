@@ -30,7 +30,7 @@ function Header(props) {
   }, [cartItems]);
 
   return (
-    <>
+    <div className="full-width-div">
       <div className="main-outer-div-header">
         <div className="heading-div-header">
           <h2>REACTBITES</h2>
@@ -60,7 +60,7 @@ function Header(props) {
       <div className="main-image">
         <img src={mealsImg} alt="A meals" />
       </div>
-    </>
+    </div>
   );
 }
 

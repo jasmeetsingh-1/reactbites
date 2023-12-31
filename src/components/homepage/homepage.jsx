@@ -17,7 +17,7 @@ export default function HomePage() {
   };
 
   return (
-    <>
+    <div className="full-width-div">
       {/* <Header /> */}
       <div className="main-home-page-container">
         <div className="outer-div-home-page-menu">
@@ -93,6 +93,6 @@ export default function HomePage() {
         </div>
       </div>
       <Footer />
-    </>
+    </div>
   );
 }

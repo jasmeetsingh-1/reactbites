@@ -10,6 +10,9 @@ code {
   font-family: "Inter", monospace;
 }
 
+.full-width-div {
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }
