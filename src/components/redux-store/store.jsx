@@ -21,6 +21,13 @@ const cartItems = {
   totalAmount: 0,
 };
 
+const ordersDetailsData = {
+  cartItems: [],
+  oderTotal: 0,
+  loginEmail: "",
+  orderAddress: "",
+};
+
 const LoginSlice = createSlice({
   name: "login",
   initialState: loginFormData,
@@ -46,6 +53,18 @@ const SignUpSlice = createSlice({
       };
 
       state.signupdata = [...state.signupdata, newSignUp];
+    },
+  },
+});
+
+const ordersSlice = createSlice({
+  name: "orders",
+  initialState: ordersDetailsData,
+  reducers: {
+    addToOrders(state, action) {
+      //action willhave a payload
+      console.log("add to orders function called: ", action.payload);
+      //here we'll check if we have orders for the current email, we'll update that
     },
   },
 });
@@ -139,12 +158,17 @@ const persistedReducerCartItemSlice = persistReducer(
   persistConfig,
   cartSlice.reducer
 );
+const persistReducerOrderSlice = persistReducer(
+  persistConfig,
+  ordersSlice.reducer
+);
 
 const store = configureStore({
   reducer: {
     loginStore: persistedReducerLoginSlice,
     signupStore: persistedReducerSignUpSlice,
     cartStore: persistedReducerCartItemSlice,
+    ordersStore: persistReducerOrderSlice,
   },
 });
 
@@ -153,6 +177,7 @@ const persistor = persistStore(store);
 export const loginReducers = LoginSlice.actions;
 export const signUpReducers = SignUpSlice.actions;
 export const cartItemReducers = cartSlice.actions;
+export const ordersReducers = ordersSlice.actions;
 
 export default store;
 export { persistor };

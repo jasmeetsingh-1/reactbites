@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../cssFIles/orderForm/orderform.css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { ordersReducers } from "../redux-store/store";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import Footer from "../footer/footer";
 
 function OrderForm() {
   const loginData = useSelector((state) => state.loginStore);
+  const cartItems = useSelector((state) => state.cartStore);
+  const dispatch = useDispatch();
+
   const capitalizeFirstLetter = (str) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
   };
@@ -21,10 +25,10 @@ function OrderForm() {
 
   const validation = Yup.object({
     name: Yup.string().required(""),
-    phonenumber: Yup.number().required(""),
-    address: Yup.string().required(),
-    city: Yup.string().required(),
-    state: Yup.string().required(),
+    phonenumber: Yup.number().required("Enter phone number"),
+    address: Yup.string().required("Enter Address"),
+    city: Yup.string().required("Enter City"),
+    state: Yup.string().required("Enter State"),
   });
 
   const formik = useFormik({
@@ -39,7 +43,13 @@ function OrderForm() {
         state: values.state,
       };
       console.log(formdata);
-      // formik.resetForm();
+      const orderPayload = {
+        orderAddress: formdata,
+        loginEmail: loginData.data.email,
+        orderTotal: cartItems.totalAmount,
+        cartItems: cartItems.cart,
+      };
+      dispatch(ordersReducers.addToOrders(orderPayload));
     },
   });
 
@@ -56,7 +66,9 @@ function OrderForm() {
           <div>
             <form onSubmit={formik.handleSubmit}>
               <div className="input-holder-orderform">
-                <label htmlFor="username">NAME</label>
+                <label htmlFor="username">
+                  NAME<span style={{ color: "red" }}>*</span>
+                </label>
                 <input
                   name="username"
                   id="username"
@@ -68,40 +80,108 @@ function OrderForm() {
                 />
               </div>
               <div className="input-holder-orderform">
-                <label htmlFor="phonenumber">PHONE NUMBER</label>
+                <label htmlFor="phonenumber">
+                  PHONE NUMBER<span style={{ color: "red" }}>*</span>
+                </label>
                 <input
                   name="phonenumber"
                   id="phonenumber"
                   type="number"
                   placeholder="ENTER YOUR PHONE NUMBER"
+                  value={formik.values.phonenumber}
+                  onChange={formik.handleChange}
                 />
+                {formik.errors.phonenumber && formik.touched.phonenumber ? (
+                  <p
+                    style={{
+                      color: "red",
+                      position: "absolute",
+                      top: "75px",
+                      right: "0",
+                      margin: "0",
+                    }}
+                  >
+                    {formik.errors.phonenumber}
+                  </p>
+                ) : null}
               </div>
               <div className="input-holder-orderform">
-                <label htmlFor="address">ADDRESS</label>
+                <label htmlFor="address">
+                  ADDRESS<span style={{ color: "red" }}>*</span>
+                </label>
                 <input
                   name="address"
                   id="address"
                   type="text"
                   placeholder="ENTER YOUR ADDRESS"
+                  value={formik.values.address}
+                  onChange={formik.handleChange}
                 />
+                {formik.errors.address && formik.touched.address ? (
+                  <p
+                    style={{
+                      color: "red",
+                      position: "absolute",
+                      top: "75px",
+                      right: "0",
+                      margin: "0",
+                    }}
+                  >
+                    {formik.errors.address}
+                  </p>
+                ) : null}
               </div>
               <div className="input-holder-orderform">
-                <label htmlFor="city">CITY</label>
+                <label htmlFor="city">
+                  CITY<span style={{ color: "red" }}>*</span>
+                </label>
                 <input
                   name="city"
                   id="city"
                   type="text"
                   placeholder="ENTER YOUR CITY"
+                  value={formik.values.city}
+                  onChange={formik.handleChange}
                 />
+                {formik.errors.city && formik.touched.city ? (
+                  <p
+                    style={{
+                      color: "red",
+                      position: "absolute",
+                      top: "75px",
+                      right: "0",
+                      margin: "0",
+                    }}
+                  >
+                    {formik.errors.city}
+                  </p>
+                ) : null}
               </div>
               <div className="input-holder-orderform">
-                <label htmlFor="state">STATE</label>
+                <label htmlFor="state">
+                  STATE<span style={{ color: "red" }}>*</span>
+                </label>
                 <input
                   name="state"
                   id="state"
                   type="text"
                   placeholder="ENTER YOUR STATE"
+                  value={formik.values.state}
+                  onChange={formik.handleChange}
                 />
+                {formik.errors.state && formik.touched.state ? (
+                  <p
+                    style={{
+                      color: "red",
+                      position: "absolute",
+                      top: "75px",
+                      right: "0",
+                      margin: "0",
+                    }}
+                  >
+                    {formik.errors.state}
+                  </p>
+                ) : null}
               </div>
               <div className="input-holder-orderform">
                 <button>Submit</button>
