@@ -21,13 +21,6 @@ const cartItems = {
   totalAmount: 0,
 };
 
-const ordersDetailsData = {
-  cartItems: [],
-  oderTotal: 0,
-  loginEmail: "",
-  orderAddress: "",
-};
-
 const LoginSlice = createSlice({
   name: "login",
   initialState: loginFormData,
@@ -50,21 +43,41 @@ const SignUpSlice = createSlice({
         name: action.payload.name,
         password: action.payload.password,
         email: action.payload.email,
+        orders: [],
       };
 
       state.signupdata = [...state.signupdata, newSignUp];
     },
-  },
-});
-
-const ordersSlice = createSlice({
-  name: "orders",
-  initialState: ordersDetailsData,
-  reducers: {
     addToOrders(state, action) {
-      //action willhave a payload
-      console.log("add to orders function called: ", action.payload);
-      //here we'll check if we have orders for the current email, we'll update that
+      //action payload:
+      //    email,
+      //through that email i'l go to that account and then update order there
+      const indexOFItem = state.signupdata.findIndex(
+        (item) => item.email === action.payload.loginEmail
+      );
+      if (indexOFItem !== -1) {
+        const UpdatedItems = [...state.signupdata];
+        const newOrder = {
+          cartItems: action.payload.cartItems,
+          orderTotal: action.payload.orderTotal,
+          orderAddress: action.payload.orderAddress,
+        };
+        const newItem = {
+          ...UpdatedItems[indexOFItem],
+          orders: [...UpdatedItems[indexOFItem].orders, newOrder],
+        };
+
+        UpdatedItems[indexOFItem] = newItem;
+        state.signupdata = UpdatedItems;
+        //now clear the cart as order is placed
+        state.cart = [];
+        state.totalAmount = 0;
+      } else {
+        console.log(
+          "No account with action payload email>>>>",
+          action.payload.loginEmail
+        );
+      }
     },
   },
 });
@@ -92,20 +105,24 @@ const cartSlice = createSlice({
         const newTotalAmount =
           state.totalAmount + action.payload.price * action.payload.amount;
 
-        return {
-          cart: updatedItems,
-          totalAmount: newTotalAmount,
-        };
+        state.cart = updatedItems;
+        state.totalAmount = newTotalAmount;
+        // return {
+        //   cart: updatedItems,
+        //   totalAmount: newTotalAmount,
+        // };
       } else {
         //new item to add in cart
         const updatedItems = state.cart.concat(action.payload);
         const newTotalAmount =
           state.totalAmount + action.payload.price * action.payload.amount;
 
-        return {
-          cart: updatedItems,
-          totalAmount: newTotalAmount,
-        };
+        state.cart = updatedItems;
+        state.totalAmount = newTotalAmount;
+        // return {
+        //   cart: updatedItems,
+        //   totalAmount: newTotalAmount,
+        // };
       }
     },
     cartItemRemove(state, action) {
@@ -119,10 +136,12 @@ const cartSlice = createSlice({
         const updatedItems = state.cart.filter(
           (temp) => temp.id !== action.payload
         );
-        return {
-          cart: updatedItems,
-          totalAmount: newTotalAmount,
-        };
+        state.cart = updatedItems;
+        state.totalAmount = newTotalAmount;
+        // return {
+        //   cart: updatedItems,
+        //   totalAmount: newTotalAmount,
+        // };
       } else {
         //update the amount
         let newItem = {
@@ -131,17 +150,21 @@ const cartSlice = createSlice({
         };
         const updatedItems = [...state.cart];
         updatedItems[indexOFItem] = newItem;
-        return {
-          cart: updatedItems,
-          totalAmount: newTotalAmount,
-        };
+        state.cart = updatedItems;
+        state.totalAmount = newTotalAmount;
+        // return {
+        //   cart: updatedItems,
+        //   totalAmount: newTotalAmount,
+        // };
       }
     },
     cartItemClear(state) {
-      return {
-        cart: [],
-        totalAmount: 0,
-      };
+      state.cart = [];
+      state.totalAmount = 0;
+      // return {
+      //   cart: [],
+      //   totalAmount: 0,
+      // };
     },
   },
 });
@@ -158,17 +181,12 @@ const persistedReducerCartItemSlice = persistReducer(
   persistConfig,
   cartSlice.reducer
 );
-const persistReducerOrderSlice = persistReducer(
-  persistConfig,
-  ordersSlice.reducer
-);
 
 const store = configureStore({
   reducer: {
     loginStore: persistedReducerLoginSlice,
     signupStore: persistedReducerSignUpSlice,
     cartStore: persistedReducerCartItemSlice,
-    ordersStore: persistReducerOrderSlice,
   },
 });
 
@@ -177,7 +195,6 @@ const persistor = persistStore(store);
 export const loginReducers = LoginSlice.actions;
 export const signUpReducers = SignUpSlice.actions;
 export const cartItemReducers = cartSlice.actions;
-export const ordersReducers = ordersSlice.actions;
 
 export default store;
 export { persistor };
