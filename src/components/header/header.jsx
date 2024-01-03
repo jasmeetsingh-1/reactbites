@@ -36,8 +36,13 @@ function Header(props) {
           <h2>REACTBITES</h2>
         </div>
         <div className="header-button-holder">
+          <button className="header-buttons-navbar" onClick={props.openCart}>
+            Your Cart
+            <span className="cart-items-header">{totalCartItems}</span>
+          </button>
           <button
             className="header-buttons-navbar"
+            style={{ marginRight: "43px" }}
             onClick={(e) => {
               e.preventDefault();
               if (!loginData.isloggedIn) {
@@ -46,14 +51,6 @@ function Header(props) {
             }}
           >
             {username ? `Hi, ${username}` : "Login/SignUp"}
-          </button>
-          <button
-            className="header-buttons-navbar"
-            style={{ marginRight: "43px" }}
-            onClick={props.openCart}
-          >
-            Your Cart
-            <span className="cart-items-header">{totalCartItems}</span>
           </button>
         </div>
       </div>

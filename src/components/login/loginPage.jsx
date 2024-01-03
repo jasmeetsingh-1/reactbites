@@ -5,7 +5,8 @@ import { loginReducers, signUpReducers } from "../redux-store/store";
 import { useDispatch, useSelector } from "react-redux";
 
 import "../cssFIles/login/loginPage.css";
-import image from "../../assets/welcomefood.jpg";
+// import image from "../../assets/welcomefood.jpg";
+import image from "../../assets/welcomefood.svg";
 function LoginPage() {
   const dispatch = useDispatch();
   const [loginForm, setloginForm] = useState(false);
