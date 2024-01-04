@@ -5,6 +5,7 @@ import { loginReducers, signUpReducers } from "../redux-store/store";
 import { useDispatch, useSelector } from "react-redux";
 
 import "../cssFIles/login/loginPage.css";
+import Profile from "../Modals/ProfileModal/profile";
 // import image from "../../assets/welcomefood.jpg";
 // import image from "../../assets/welcomefood.svg";
 function LoginPage() {
@@ -218,6 +219,7 @@ function LoginPage() {
 
   return (
     <>
+      <Profile show={true} />
       <div className="main-div-container ">
         <div className="main-image-container">
           {/* <img

@@ -10,7 +10,7 @@ import "../cssFIles/homepage/homepage.css";
 export default function HomePage() {
   const [inputState, setInputState] = useState(1);
   const dispatch = useDispatch();
-  const [indexMealItem, setIndexMealItem] = useState("desserts");
+  const [indexMealItem, setIndexMealItem] = useState("soup");
 
   const capitalizeFirstLetter = (str) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
