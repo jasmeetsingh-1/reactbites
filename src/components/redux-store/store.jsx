@@ -27,8 +27,13 @@ const LoginSlice = createSlice({
   reducers: {
     //function to write which we'll be using
     loginButtonHandlerReducers(state, action) {
-      state.isloggedIn = action.payload.status;
-      state.data = action.payload.userdata;
+      return {
+        ...state,
+        isloggedIn: action.payload.status,
+        data: action.payload.userdata,
+      };
+      // state.isloggedIn = action.payload.status;
+      // state.data = action.payload.userdata;
     },
   },
 });
@@ -45,8 +50,11 @@ const SignUpSlice = createSlice({
         email: action.payload.email,
         orders: [],
       };
-
-      state.signupdata = [...state.signupdata, newSignUp];
+      return {
+        ...state,
+        signupdata: [...state.signupdata, newSignUp],
+      };
+      // state.signupdata = [...state.signupdata, newSignUp];
     },
     addToOrders(state, action) {
       //action payload:
@@ -70,8 +78,13 @@ const SignUpSlice = createSlice({
         UpdatedItems[indexOFItem] = newItem;
         state.signupdata = UpdatedItems;
         //now clear the cart as order is placed
-        state.cart = [];
-        state.totalAmount = 0;
+        // state.cart = [];
+        // state.totalAmount = 0;
+        return {
+          ...state,
+          cart: [],
+          totalAmount: [],
+        };
       } else {
         console.log(
           "No account with action payload email>>>>",
@@ -105,24 +118,26 @@ const cartSlice = createSlice({
         const newTotalAmount =
           state.totalAmount + action.payload.price * action.payload.amount;
 
-        state.cart = updatedItems;
-        state.totalAmount = newTotalAmount;
-        // return {
-        //   cart: updatedItems,
-        //   totalAmount: newTotalAmount,
-        // };
+        // state.cart = updatedItems;
+        // state.totalAmount = newTotalAmount;
+        return {
+          ...state,
+          cart: updatedItems,
+          totalAmount: newTotalAmount,
+        };
       } else {
         //new item to add in cart
         const updatedItems = state.cart.concat(action.payload);
         const newTotalAmount =
           state.totalAmount + action.payload.price * action.payload.amount;
 
-        state.cart = updatedItems;
-        state.totalAmount = newTotalAmount;
-        // return {
-        //   cart: updatedItems,
-        //   totalAmount: newTotalAmount,
-        // };
+        // state.cart = updatedItems;
+        // state.totalAmount = newTotalAmount;
+        return {
+          ...state,
+          cart: updatedItems,
+          totalAmount: newTotalAmount,
+        };
       }
     },
     cartItemRemove(state, action) {
@@ -136,12 +151,13 @@ const cartSlice = createSlice({
         const updatedItems = state.cart.filter(
           (temp) => temp.id !== action.payload
         );
-        state.cart = updatedItems;
-        state.totalAmount = newTotalAmount;
-        // return {
-        //   cart: updatedItems,
-        //   totalAmount: newTotalAmount,
-        // };
+        // state.cart = updatedItems;
+        // state.totalAmount = newTotalAmount;
+        return {
+          ...state,
+          cart: updatedItems,
+          totalAmount: newTotalAmount,
+        };
       } else {
         //update the amount
         let newItem = {
@@ -150,21 +166,23 @@ const cartSlice = createSlice({
         };
         const updatedItems = [...state.cart];
         updatedItems[indexOFItem] = newItem;
-        state.cart = updatedItems;
-        state.totalAmount = newTotalAmount;
-        // return {
-        //   cart: updatedItems,
-        //   totalAmount: newTotalAmount,
-        // };
+        // state.cart = updatedItems;
+        // state.totalAmount = newTotalAmount;
+        return {
+          ...state,
+          cart: updatedItems,
+          totalAmount: newTotalAmount,
+        };
       }
     },
     cartItemClear(state) {
-      state.cart = [];
-      state.totalAmount = 0;
-      // return {
-      //   cart: [],
-      //   totalAmount: 0,
-      // };
+      // state.cart = [];
+      // state.totalAmount = 0;
+      return {
+        ...state,
+        cart: [],
+        totalAmount: 0,
+      };
     },
   },
 });

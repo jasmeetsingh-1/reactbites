@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import "../cssFIles/login/loginPage.css";
 // import image from "../../assets/welcomefood.jpg";
-import image from "../../assets/welcomefood.svg";
+// import image from "../../assets/welcomefood.svg";
 function LoginPage() {
   const dispatch = useDispatch();
   const [loginForm, setloginForm] = useState(false);
@@ -220,7 +220,7 @@ function LoginPage() {
     <>
       <div className="main-div-container ">
         <div className="main-image-container">
-          <img
+          {/* <img
             style={{
               width: "inherit",
               height: "inherit",
@@ -228,7 +228,7 @@ function LoginPage() {
             }}
             src={image}
             alt="Welcome screen"
-          />
+          /> */}
         </div>
         <div className="information-outer-main-div">
           <div className="heading-section-login-page">

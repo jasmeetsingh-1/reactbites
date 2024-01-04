@@ -3,6 +3,7 @@ import "../cssFIles/header/header.css";
 import mealsImg from "../../assets/meals.jpg";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 function Header(props) {
   const navigate = useNavigate();
@@ -38,7 +39,9 @@ function Header(props) {
         <div className="header-button-holder">
           <button className="header-buttons-navbar" onClick={props.openCart}>
             Your Cart
-            <span className="cart-items-header">{totalCartItems}</span>
+            <span className="cart-items-header-css-reactbites">
+              {totalCartItems}
+            </span>
           </button>
           <button
             className="header-buttons-navbar"
