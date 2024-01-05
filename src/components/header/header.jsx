@@ -60,7 +60,6 @@ function Header(props) {
                 if (!loginData.isloggedIn) {
                   navigate("/login");
                 } else {
-                  console.log("modal to show ");
                   SetShowProfile(true);
                 }
               }}

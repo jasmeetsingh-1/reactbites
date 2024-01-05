@@ -49,6 +49,7 @@ function OrderForm() {
         orderTotal: cartItems.totalAmount,
         cartItems: cartItems.cart,
       };
+      console.log("order payload>>>>", orderPayload);
       dispatch(signUpReducers.addToOrders(orderPayload));
       formik.resetForm();
     },

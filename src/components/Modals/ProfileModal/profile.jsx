@@ -14,13 +14,10 @@ const onSubmitHandler = (values) => {
 };
 function Profile(props) {
   const [formDisabled, setformDisabled] = useState(true);
-  useEffect(() => {
-    console.log("state>>>>", formDisabled);
-  }, [formDisabled]);
+
   return (
     <Modal show={props.show} onHide={props.onHide}>
       {/* <Modal show={true} onHide={props.onHide}> */}
-      {/* <ModalBody className="modal-profileModal"> */}
       <div className=" modal-profileModal main-holder-profile-modal">
         <div className="header-profile-modal-css">Hi, User</div>
         <div>
@@ -94,7 +91,6 @@ function Profile(props) {
           </div>
         </div>
       </div>
-      {/* </ModalBody> */}
     </Modal>
   );
 }

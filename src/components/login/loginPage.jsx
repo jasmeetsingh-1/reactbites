@@ -219,7 +219,6 @@ function LoginPage() {
 
   return (
     <>
-      <Profile show={true} />
       <div className="main-div-container ">
         <div className="main-image-container">
           {/* <img

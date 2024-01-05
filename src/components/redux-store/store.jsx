@@ -65,6 +65,8 @@ const SignUpSlice = createSlice({
       );
       if (indexOFItem !== -1) {
         const UpdatedItems = [...state.signupdata];
+        console.log("order button clicked", UpdatedItems);
+        return;
         const newOrder = {
           cartItems: action.payload.cartItems,
           orderTotal: action.payload.orderTotal,
