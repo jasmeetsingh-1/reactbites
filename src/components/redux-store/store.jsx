@@ -25,7 +25,6 @@ const LoginSlice = createSlice({
   name: "login",
   initialState: loginFormData,
   reducers: {
-    //function to write which we'll be using
     loginButtonHandlerReducers(state, action) {
       return {
         ...state,
@@ -65,8 +64,6 @@ const SignUpSlice = createSlice({
       );
       if (indexOFItem !== -1) {
         const UpdatedItems = [...state.signupdata];
-        console.log("order button clicked", UpdatedItems);
-        return;
         const newOrder = {
           cartItems: action.payload.cartItems,
           orderTotal: action.payload.orderTotal,
