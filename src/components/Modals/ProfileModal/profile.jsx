@@ -19,7 +19,11 @@ function Profile(props) {
   const [formDisabled, setformDisabled] = useState(true);
 
   return (
-    <Modal show={props.show} onHide={props.onHide}>
+    <Modal
+      show={props.show}
+      onHide={props.onHide}
+      contentClassName="modal-resize-profileModal"
+    >
       <div className="profile-holder-outer-div">
         <div className="profile-modal-left-holder">
           <div className="gradient-border">
@@ -64,7 +68,31 @@ function Profile(props) {
             </button>
           </div>
         </div>
-        <div className="profile-modal-right-holder">cart and address</div>
+        <div className="profile-modal-right-holder">
+          <div>
+            <span>Delivered At</span>
+            {/* remove this and use table here */}
+            <div className="order-delivery-address-holder">
+              <div className="order-delivery-address-row">
+                <p>Name:</p>
+                <p>Jasmeet Singh</p>
+              </div>
+              <div className="order-delivery-address-row">
+                <p>Contact No.:</p>
+                <p>9877998276</p>
+              </div>
+              <div className="order-delivery-address-row">
+                <p>Address:</p>
+                <p>
+                  262B, Guru Arjan Dev Nagar, near Putlighar, Amritsar, Punjab
+                </p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <span>Cart items</span>
+          </div>
+        </div>
       </div>
     </Modal>
   );
