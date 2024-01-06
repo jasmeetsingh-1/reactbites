@@ -26,7 +26,7 @@
 
 .profile-holder-outer-div {
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
   padding: 2rem;
 }
 
@@ -39,7 +39,7 @@
 
 .profile-modal-left-holder > div > div > span {
   color: #858585;
-  font-size: 12px;
+  font-size: 16px;
   font-style: italic;
   font-weight: 400;
   line-height: normal;
@@ -47,7 +47,7 @@
 
 .profile-modal-left-holder > div > div > p {
   color: #000;
-  font-size: 12px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 800;
   line-height: normal;
@@ -106,5 +106,5 @@
 }
 
 .profile-modal-right-holder {
-  width: 70%;
+  width: 50%;
 }
