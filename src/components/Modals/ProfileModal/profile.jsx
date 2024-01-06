@@ -2,6 +2,9 @@ import { Modal, ModalBody } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import "../cssFiles/ProfileModal/profileModal.css";
 import { Field, Formik } from "formik";
+import amount_image from "../../../assets/order_amount_profileModal.svg";
+import date_image from "../../../assets/order_Date_profileModal.svg";
+import order_id_image from "../../../assets/order_id_image_profileModal.svg";
 
 const initialValues = {
   name: "Jasmeet",
@@ -17,79 +20,51 @@ function Profile(props) {
 
   return (
     <Modal show={props.show} onHide={props.onHide}>
-      {/* <Modal show={true} onHide={props.onHide}> */}
-      <div className=" modal-profileModal main-holder-profile-modal">
-        <div className="header-profile-modal-css">Hi, User</div>
-        <div>
-          <Formik initialValues={initialValues} onSubmit={onSubmitHandler}>
-            {({
-              values,
-              errors,
-              touched,
-              handleChange,
-              handleBlur,
-              handleSubmit,
-              isSubmitting,
-            }) => (
-              <form
-                onSubmit={handleSubmit}
-                className="profile-Modal-form-Container"
-              >
-                <div>
-                  <Field
-                    type="text"
-                    name="name"
-                    id="name"
-                    disabled={formDisabled}
-                    value={values.name}
-                  />
-                </div>
-                <div>
-                  <Field
-                    type="text"
-                    name="username"
-                    id="username"
-                    disabled={formDisabled}
-                    value={values.username}
-                  />
-                </div>
-                <div>
-                  <Field
-                    type="email"
-                    name="email"
-                    id="email"
-                    disabled={formDisabled}
-                    value={values.email}
-                  />
-                </div>
-                <span
-                  onClick={(e) => {
-                    e.preventDefault();
-                    {
-                      formDisabled ? setformDisabled(false) : handleSubmit();
-                    }
-                  }}
-                  className={
-                    formDisabled
-                      ? "edit-button-profileModal-form"
-                      : "submit-button-profileModal-form"
-                  }
-                >
-                  {formDisabled ? "Edit?" : "Submit"}
-                </span>
-              </form>
-            )}
-          </Formik>
-        </div>
-        <div className="orders-map-holder-profileModal">
-          <h3 className="profileModal-order-heading">
-            ORDER <span>#1</span>
-          </h3>
-          <div className="order-details-holder-profileModal">
-            <div>Ordered place details </div>
-            <div> Ordered Cart Items Details </div>
+      <div className="profile-holder-outer-div">
+        <div className="profile-modal-left-holder">
+          <div className="gradient-border">
+            <img
+              src={order_id_image}
+              alt="order_id"
+              title="order_id"
+              className="img-profile-holder-left-div"
+            />
+            <div>
+              <span>Order ID</span>
+              <p>#1</p>
+            </div>
+          </div>
+          <div className="gradient-border">
+            <img
+              src={date_image}
+              alt="order_date"
+              title="order_date"
+              className="img-profile-holder-left-div"
+            />
+            <div>
+              <span>Ordered On</span>
+              <p>12 Dec, 2023</p>
+            </div>
+          </div>
+          <div className="gradient-border">
+            <img
+              src={amount_image}
+              alt="order_amount"
+              title="order_amount"
+              className="img-profile-holder-left-div"
+            />
+            <div>
+              <span>Total Amount</span>
+              <p style={{ color: "#962000" }}>₹690</p>
+            </div>
+          </div>
+          <div style={{ justifyContent: "center" }}>
+            <button className="order-again-image-profilModal">
+              ORDER AGAIN
+            </button>
           </div>
         </div>
+        <div className="profile-modal-right-holder">cart and address</div>
       </div>
     </Modal>
   );
