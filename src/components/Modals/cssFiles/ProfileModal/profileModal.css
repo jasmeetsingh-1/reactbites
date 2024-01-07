@@ -34,6 +34,7 @@
   width: 30%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   /* gap: 1rem; */
 }
 
@@ -70,13 +71,12 @@
   color: #fff;
   text-align: center;
   font-size: 14px;
-  font-style: normal;
   font-weight: 700;
-  line-height: normal;
   padding: 10px 12px;
   outline: none;
   border: none;
   width: 75%;
+  cursor: pointer;
 }
 
 .img-profile-holder-left-div {
@@ -126,30 +126,32 @@
 .no-boder-table-tr-bootstrap {
   border: none !important;
   padding: 0.5rem !important;
+  /* text-align: center; */
+  vertical-align: middle !important;
 }
 
 .order-delivery-address-holder {
   font-size: 14px;
-  font-style: normal;
   font-weight: 400;
-  line-height: normal;
+  padding: 9px 15px;
 }
 
 .cart-item-holder-profileModal {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  text-align: center;
+  font-size: larger;
+  margin: 7px 0;
+  padding: 0 10px;
+  /* font-style: normal; */
+  /* font-weight: 500; */
 }
 
 .amount-holder-cart-item-profileModal {
   border-radius: 12.5px;
   background: #d9d9d9;
   color: #000;
-  text-align: center;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  padding: 8px 9px;
+  padding: 4px 10px;
 }

@@ -71,23 +71,7 @@ function Profile(props) {
         <div className="profile-modal-right-holder">
           <div>
             <span>Delivered At</span>
-            {/* remove this and use table here */}
-            {/* <div className="order-delivery-address-holder">
-              <div className="order-delivery-address-row">
-                <p>Name:</p>
-                <p>Jasmeet Singh</p>
-              </div>
-              <div className="order-delivery-address-row">
-                <p>Contact No.:</p>
-                <p>9877998276</p>
-              </div>
-              <div className="order-delivery-address-row">
-                <p>Address:</p>
-                <p>
-                  262B, Guru Arjan Dev Nagar, near Putlighar, Amritsar, Punjab
-                </p>
-              </div>
-            </div> */}
+
             <div className="order-delivery-address-holder">
               <Table striped>
                 <tbody>
@@ -119,7 +103,19 @@ function Profile(props) {
             <div className="cart-item-holder-profileModal">
               <div className="amount-holder-cart-item-profileModal">x1</div>
               <div>Chicken Lemon Coriander Soup</div>
-              <div>₹345</div>
+              <div style={{ color: "#962000" }}>₹345</div>
+            </div>
+            <div className="cart-item-holder-profileModal">
+              <div className="amount-holder-cart-item-profileModal">x1</div>
+              <div>Chicken Lemon Coriander Soup</div>
+              <div style={{ color: "#962000" }}>₹345</div>
+            </div>
+            <div
+              className="cart-item-holder-profileModal"
+              style={{ borderTop: "1px solid black", padding: "14px 0 0 0 " }}
+            >
+              <div style={{ fontWeight: "800", width: "90%" }}>SubTotal</div>
+              <div style={{ color: "#962000" }}>₹690</div>
             </div>
           </div>
         </div>

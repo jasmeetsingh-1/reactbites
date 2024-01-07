@@ -49,6 +49,7 @@ const SignUpSlice = createSlice({
         email: action.payload.email,
         orders: [],
       };
+      console.log("new signup data>>>", newSignUp);
       return {
         ...state,
         signupdata: [...state.signupdata, newSignUp],
@@ -64,7 +65,10 @@ const SignUpSlice = createSlice({
       );
       if (indexOFItem !== -1) {
         const UpdatedItems = [...state.signupdata];
+        const numberOfOrders = UpdatedItems[indexOFItem].orders.length;
+        console.log("length of orders", numberOfOrders);
         const newOrder = {
+          orderId: numberOfOrders + 1,
           cartItems: action.payload.cartItems,
           orderTotal: action.payload.orderTotal,
           orderAddress: action.payload.orderAddress,
@@ -75,12 +79,13 @@ const SignUpSlice = createSlice({
         };
 
         UpdatedItems[indexOFItem] = newItem;
-        state.signupdata = UpdatedItems;
+        // state.signupdata = UpdatedItems;
         //now clear the cart as order is placed
         // state.cart = [];
         // state.totalAmount = 0;
         return {
           ...state,
+          signupdata: UpdatedItems,
           cart: [],
           totalAmount: [],
         };
