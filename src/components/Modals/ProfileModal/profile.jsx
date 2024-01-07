@@ -1,4 +1,4 @@
-import { Modal, ModalBody } from "react-bootstrap";
+import { Modal, ModalBody, Table } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import "../cssFiles/ProfileModal/profileModal.css";
 import { Field, Formik } from "formik";
@@ -72,7 +72,7 @@ function Profile(props) {
           <div>
             <span>Delivered At</span>
             {/* remove this and use table here */}
-            <div className="order-delivery-address-holder">
+            {/* <div className="order-delivery-address-holder">
               <div className="order-delivery-address-row">
                 <p>Name:</p>
                 <p>Jasmeet Singh</p>
@@ -87,10 +87,40 @@ function Profile(props) {
                   262B, Guru Arjan Dev Nagar, near Putlighar, Amritsar, Punjab
                 </p>
               </div>
+            </div> */}
+            <div className="order-delivery-address-holder">
+              <Table striped>
+                <tbody>
+                  <tr>
+                    <td className="no-boder-table-tr-bootstrap">Name:</td>
+                    <td className="no-boder-table-tr-bootstrap">
+                      Jasmeet Singh
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="no-boder-table-tr-bootstrap">
+                      Contact No.:
+                    </td>
+                    <td className="no-boder-table-tr-bootstrap">9877998276</td>
+                  </tr>
+                  <tr>
+                    <td className="no-boder-table-tr-bootstrap">Address:</td>
+                    <td className="no-boder-table-tr-bootstrap">
+                      262B, Guru Arjan Dev Nagar, near Putlighar, Amritsar,
+                      Punjab
+                    </td>
+                  </tr>
+                </tbody>
+              </Table>
             </div>
           </div>
           <div>
             <span>Cart items</span>
+            <div className="cart-item-holder-profileModal">
+              <div className="amount-holder-cart-item-profileModal">x1</div>
+              <div>Chicken Lemon Coriander Soup</div>
+              <div>₹345</div>
+            </div>
           </div>
         </div>
       </div>
