@@ -65,12 +65,12 @@
   letter-spacing: 0.26px;
 }
 
-.footer-right-details-holder > img {
+.tempFile-component-footer {
+  border: 1px solid black;
   position: absolute;
   z-index: 9999999;
   top: -160px;
   right: 40px;
-  /* opacity: 0.5; */
 }
 
 .social-icon-holder {

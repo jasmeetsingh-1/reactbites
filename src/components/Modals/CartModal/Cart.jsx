@@ -21,7 +21,6 @@ function Cart(props) {
                     <p>{item.name}</p>
                     <button
                       onClick={(e) => {
-                        e.preventDefault();
                         dispatch(cartItemReducers.cartItemRemove(item.id));
                       }}
                     >
@@ -29,7 +28,6 @@ function Cart(props) {
                     </button>
                     <button
                       onClick={(e) => {
-                        e.preventDefault();
                         const payload = {
                           id: item.id,
                           name: item.name,
@@ -62,7 +60,7 @@ function Cart(props) {
                   dispatch(cartItemReducers.cartItemClear());
                   setTimeout(() => {
                     props.closeCart();
-                  }, [500]);
+                  }, 500);
                 }}
               >
                 Clear

@@ -5,6 +5,7 @@ import github from "../../assets/github-svg.svg";
 import linkedIn from "../../assets/linkedIn-svg.svg";
 import gmail from "../../assets/gmail-svg.svg";
 import whatsapp from "../../assets/whatsapp-svg.svg";
+import TempFileComponent from "../temp/tempFiles";
 
 function Footer() {
   return (
@@ -22,7 +23,7 @@ function Footer() {
         </p>
       </div>
       <div className="footer-right-details-holder">
-        <img src={footerImage} />
+        <TempFileComponent className="tempFile-component-footer" />
         <h4>Jasmeet Singh</h4>
         <span>Front-end Developer</span>
         <div className="social-icon-holder">
