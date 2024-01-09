@@ -26,13 +26,13 @@ const LoginSlice = createSlice({
   initialState: loginFormData,
   reducers: {
     loginButtonHandlerReducers(state, action) {
-      return {
-        ...state,
-        isloggedIn: action.payload.status,
-        data: action.payload.userdata,
-      };
-      // state.isloggedIn = action.payload.status;
-      // state.data = action.payload.userdata;
+      // return {
+      //   ...state,
+      //   isloggedIn: action.payload.status,
+      //   data: action.payload.userdata,
+      // };
+      state.isloggedIn = action.payload.status;
+      state.data = action.payload.userdata;
     },
   },
 });
@@ -50,50 +50,33 @@ const SignUpSlice = createSlice({
         orders: [],
       };
       console.log("new signup data>>>", newSignUp);
-      return {
-        ...state,
-        signupdata: [...state.signupdata, newSignUp],
-      };
-      // state.signupdata = [...state.signupdata, newSignUp];
+      state.signupdata = [...state.signupdata, newSignUp];
+      // return {
+      //   ...state,
+      //   signupdata: [...state.signupdata, newSignUp],
+      // };
     },
     addToOrders(state, action) {
-      //action payload:
-      //    email,
-      //through that email i'l go to that account and then update order there
+      console.log("action payload>>>", action.payload);
       const indexOFItem = state.signupdata.findIndex(
         (item) => item.email === action.payload.loginEmail
       );
+      let newSignUpData;
       if (indexOFItem !== -1) {
-        const UpdatedItems = [...state.signupdata];
-        const numberOfOrders = UpdatedItems[indexOFItem].orders.length;
-        console.log("length of orders", numberOfOrders);
+        const updatedSignUpdata = state.signupdata[indexOFItem];
         const newOrder = {
-          orderId: numberOfOrders + 1,
-          cartItems: action.payload.cartItems,
-          orderTotal: action.payload.orderTotal,
+          orderId: updatedSignUpdata.orders.length + 1,
           orderAddress: action.payload.orderAddress,
+          orderTotal: action.payload.orderTotal,
+          orderItems: action.payload.cartItems,
         };
-        const newItem = {
-          ...UpdatedItems[indexOFItem],
-          orders: [...UpdatedItems[indexOFItem].orders, newOrder],
+        console.log(newOrder);
+        newSignUpData = {
+          ...updatedSignUpdata,
+          orders: [...updatedSignUpdata.orders, newOrder],
         };
 
-        UpdatedItems[indexOFItem] = newItem;
-        // state.signupdata = UpdatedItems;
-        //now clear the cart as order is placed
-        // state.cart = [];
-        // state.totalAmount = 0;
-        return {
-          ...state,
-          signupdata: UpdatedItems,
-          cart: [],
-          totalAmount: [],
-        };
-      } else {
-        console.log(
-          "No account with action payload email>>>>",
-          action.payload.loginEmail
-        );
+        console.log("updatred", newSignUpData);
       }
     },
   },
@@ -122,46 +105,40 @@ const cartSlice = createSlice({
         const newTotalAmount =
           state.totalAmount + action.payload.price * action.payload.amount;
 
-        // state.cart = updatedItems;
-        // state.totalAmount = newTotalAmount;
-        return {
-          ...state,
-          cart: updatedItems,
-          totalAmount: newTotalAmount,
-        };
+        state.cart = updatedItems;
+        state.totalAmount = newTotalAmount;
+        // return {
+        //   ...state,
+        //   cart: updatedItems,
+        //   totalAmount: newTotalAmount,
+        // };
       } else {
         //new item to add in cart
         const updatedItems = state.cart.concat(action.payload);
         const newTotalAmount =
           state.totalAmount + action.payload.price * action.payload.amount;
 
-        // state.cart = updatedItems;
-        // state.totalAmount = newTotalAmount;
-        return {
-          ...state,
-          cart: updatedItems,
-          totalAmount: newTotalAmount,
-        };
+        state.cart = updatedItems;
+        state.totalAmount = newTotalAmount;
       }
     },
     cartItemRemove(state, action) {
       const indexOFItem = state.cart.findIndex(
         (item) => item.id === action.payload
       );
-      // return;
       const newTotalAmount = state.totalAmount - state.cart[indexOFItem].price;
       if (state.cart[indexOFItem].amount === 1) {
         //remove completed
         const updatedItems = state.cart.filter(
           (temp) => temp.id !== action.payload
         );
-        // state.cart = updatedItems;
-        // state.totalAmount = newTotalAmount;
-        return {
-          ...state,
-          cart: updatedItems,
-          totalAmount: newTotalAmount,
-        };
+        state.cart = updatedItems;
+        state.totalAmount = newTotalAmount;
+        // return {
+        //   ...state,
+        //   cart: updatedItems,
+        //   totalAmount: newTotalAmount,
+        // };
       } else {
         //update the amount
         let newItem = {
@@ -170,23 +147,23 @@ const cartSlice = createSlice({
         };
         const updatedItems = [...state.cart];
         updatedItems[indexOFItem] = newItem;
-        // state.cart = updatedItems;
-        // state.totalAmount = newTotalAmount;
-        return {
-          ...state,
-          cart: updatedItems,
-          totalAmount: newTotalAmount,
-        };
+        state.cart = updatedItems;
+        state.totalAmount = newTotalAmount;
+        // return {
+        //   ...state,
+        //   cart: updatedItems,
+        //   totalAmount: newTotalAmount,
+        // };
       }
     },
     cartItemClear(state) {
-      // state.cart = [];
-      // state.totalAmount = 0;
-      return {
-        ...state,
-        cart: [],
-        totalAmount: 0,
-      };
+      state.cart = [];
+      state.totalAmount = 0;
+      // return {
+      //   ...state,
+      //   cart: [],
+      //   totalAmount: 0,
+      // };
     },
   },
 });
