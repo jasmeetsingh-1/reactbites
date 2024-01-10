@@ -65,6 +65,7 @@
   font-weight: 500;
   line-height: normal;
   margin: 0;
+  width: fit-content;
 }
 
 .main-content-cartitem > div > button {
@@ -113,8 +114,21 @@
   display: flex;
   justify-content: space-between;
   margin: 1rem 0rem 2rem 0rem;
+  gap: 1rem;
 }
 
 .cart-holder-cartfile button:hover {
   cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .buttons-container-cartfiles {
+    flex-direction: column;
+  }
+  .main-content-cartitem {
+    flex-wrap: nowrap;
+  }
+  .total-amount-container-cartfile {
+    margin-top: 1rem;
+  }
 }

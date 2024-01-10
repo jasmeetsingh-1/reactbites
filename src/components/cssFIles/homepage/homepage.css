@@ -157,3 +157,9 @@
     width: 100%;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .main-home-page-container {
+    width: fit-content;
+  }
+}
