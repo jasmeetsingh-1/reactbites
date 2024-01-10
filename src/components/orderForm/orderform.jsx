@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../cssFIles/orderForm/orderform.css";
 import { useSelector, useDispatch } from "react-redux";
 // import { ordersReducers } from "../redux-store/store";
@@ -6,8 +6,10 @@ import { signUpReducers } from "../redux-store/store";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import Footer from "../footer/footer";
+import OrderPlaced from "../Modals/OrderPlacedModal/OrderPlacedModal";
 
 function OrderForm() {
+  const [OrderPlacedModal, setOrderPlacedModal] = useState(false);
   const loginData = useSelector((state) => state.loginStore);
   const cartItems = useSelector((state) => state.cartStore);
   const dispatch = useDispatch();
@@ -32,26 +34,29 @@ function OrderForm() {
     state: Yup.string().required("Enter State"),
   });
 
+  const OrderPlacedFromSubmitHandle = (values) => {
+    const formdata = {
+      name: values.name,
+      phonenumber: values.phonenumber,
+      address: values.address,
+      city: values.city,
+      state: values.state,
+    };
+    const orderPayload = {
+      orderAddress: formdata,
+      loginEmail: loginData.data.email,
+      orderTotal: cartItems.totalAmount,
+      cartItems: cartItems.cart,
+    };
+    dispatch(signUpReducers.addToOrders(orderPayload));
+    formik.resetForm();
+    setOrderPlacedModal(true);
+  };
+
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: validation,
-    onSubmit: (values) => {
-      const formdata = {
-        name: values.name,
-        phonenumber: values.phonenumber,
-        address: values.address,
-        city: values.city,
-        state: values.state,
-      };
-      const orderPayload = {
-        orderAddress: formdata,
-        loginEmail: loginData.data.email,
-        orderTotal: cartItems.totalAmount,
-        cartItems: cartItems.cart,
-      };
-      dispatch(signUpReducers.addToOrders(orderPayload));
-      formik.resetForm();
-    },
+    onSubmit: OrderPlacedFromSubmitHandle,
   });
 
   return (
@@ -191,6 +196,12 @@ function OrderForm() {
           </div>
         </div>
       </div>
+      <OrderPlaced
+        show={OrderPlacedModal}
+        onHide={() => {
+          setOrderPlacedModal(false);
+        }}
+      />
       <Footer />
     </>
   );
