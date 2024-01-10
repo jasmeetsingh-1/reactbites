@@ -22,7 +22,7 @@
 }
 
 .home-page-menu-items {
-  border-radius: 20px;
+  border-radius: 10px;
   background: rgba(231, 72, 0, 0.53);
   width: fit-content;
   padding: 16px 15px;
@@ -103,6 +103,7 @@
   border: none;
   outline: none;
   text-align: center;
+  font-size: larger;
 }
 
 .input-label-field > label {
@@ -119,9 +120,9 @@
 }
 
 .submit-button-holder > button {
-  width: 6rem;
+  width: 7rem;
   height: max-content;
-  border-radius: 6px;
+  border-radius: 5px;
   background: #962000;
   color: #fff;
   text-align: center;
@@ -131,7 +132,7 @@
   line-height: normal;
   outline: none;
   border: none;
-  padding: 0.2rem 0;
+  padding: 0.2rem 0.4rem;
 }
 
 .submit-button-holder > button:hover {

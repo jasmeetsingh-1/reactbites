@@ -8,7 +8,8 @@
   flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
-  padding: 40px 20px;
+  padding: 20px 20px 30px 20px;
+  border-radius: 12px;
 }
 
 .content-holder-div-orderPlacedModal > h3 {
@@ -16,6 +17,7 @@
   font-size: 32px;
   font-weight: 900;
   text-align: center;
+  margin: 15px 0 0 0;
 }
 
 .content-holder-div-orderPlacedModal > p {
@@ -25,7 +27,7 @@
   font-weight: 700;
   letter-spacing: -0.13px;
   padding: 0;
-  margin: 0;
+  margin: 15px 0 0 0;
 }
 
 .included-main-holder-stepmodal1 {
@@ -35,7 +37,7 @@
   gap: 1rem;
   background-color: rgba(28, 28, 28, 0.1);
   border-radius: 5px;
-  margin-bottom: 15px;
+  margin: 15px 0 0 0;
   padding: 11px 26px;
   /* flex-direction: column; */
 }
@@ -65,4 +67,38 @@
 .included-items-plans-stepmodal1 img {
   width: 20px;
   margin-right: 8px;
+}
+
+.order-placed-modal-div-button {
+  display: flex;
+  flex-direction: row;
+  width: 85%;
+  justify-content: space-around;
+  padding: 0 5px;
+  margin: 20px 0 0 0;
+}
+
+.order-placed-modal-div-button > button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 5px;
+  background: rgba(150, 32, 0, 0.9);
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.25);
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 7px 11px;
+}
+
+.order-placed-modal-div-button > div {
+  color: #9d3306;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration-line: underline;
+  align-items: center;
+  display: flex;
+  cursor: pointer;
 }

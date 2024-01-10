@@ -56,6 +56,10 @@ function OrderPlaced(props) {
           </div>
         </div>
       </div>
+      <div className="order-placed-modal-div-button">
+        <div>View your Profile</div>
+        <button>Go To Home Page</button>
+      </div>
     </Modal>
   );
 }
