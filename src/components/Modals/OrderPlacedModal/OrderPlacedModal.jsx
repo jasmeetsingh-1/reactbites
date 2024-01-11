@@ -3,9 +3,11 @@ import React, { useState } from "react";
 import "../cssFiles/OrderPlacedModal/OrderPlacedModal.css";
 import Lottie from "lottie-react";
 import OrderPlacedAnimation from "../../../assets/OrderPlacedAnimation.json";
+import { useNavigate } from "react-router-dom";
 
 function OrderPlaced(props) {
   const [showModal, setShowModal] = useState(true);
+  const navigate = useNavigate();
   return (
     // <Modal show={props.show} onHide={props.onHide}>
     <Modal
@@ -57,8 +59,20 @@ function OrderPlaced(props) {
         </div>
       </div>
       <div className="order-placed-modal-div-button">
-        <div>View your Profile</div>
-        <button>Go To Home Page</button>
+        <div
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          View your Profile
+        </div>
+        <button
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          Go To Home Page
+        </button>
       </div>
     </Modal>
   );

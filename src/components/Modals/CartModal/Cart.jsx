@@ -2,10 +2,21 @@ import Modal from "../Modal";
 import "../cssFiles/CartModal/Cart.css";
 import { cartItemReducers } from "../../redux-store/store";
 import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Cart(props) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const cartItems = useSelector((state) => state.cartStore);
+  const loginStore = useSelector((state) => state.loginStore);
+
+  const handleOrderSubmit = () => {
+    console.log("button clicked");
+    props.closeCart();
+    if (loginStore.isloggedIn) navigate("/order");
+    else navigate("/login");
+  };
   return (
     <Modal className="cart-holder-cartfile" onClick={props.closeCart}>
       <div className="cart-holder-cartfile">
@@ -77,7 +88,14 @@ function Cart(props) {
           ) : (
             ""
           )}
-          <button style={{ backgroundColor: "#541904", color: "white" }}>
+          <button
+            className={
+              cartItems.totalAmount === 0 ? "button-is-diabled-cart-modal" : ""
+            }
+            onClick={handleOrderSubmit}
+            disabled={cartItems.totalAmount === 0}
+            style={{ backgroundColor: "#541904", color: "white" }}
+          >
             Order
           </button>
         </div>

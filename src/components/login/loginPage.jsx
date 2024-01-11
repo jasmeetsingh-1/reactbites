@@ -6,10 +6,12 @@ import { useDispatch, useSelector } from "react-redux";
 
 import "../cssFIles/login/loginPage.css";
 import Profile from "../Modals/ProfileModal/profile";
+import { useNavigate } from "react-router-dom";
 // import image from "../../assets/welcomefood.jpg";
 // import image from "../../assets/welcomefood.svg";
 function LoginPage() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [loginForm, setloginForm] = useState(false);
   const [signUpForm, setsignUpForm] = useState(false);
   const signupData = useSelector((state) => state.signupStore.signupdata);
@@ -71,7 +73,29 @@ function LoginPage() {
     return flag;
   }
 
-  function loginFormHandler() {
+  function loginFormHandler(key) {
+    // if (key === "afterSignUp") {
+    //   setLoginFormData({
+    //     ...loginFormData,
+    //     usernamelogin: signUpFormData.username,
+    //     passwordlogin: signUpFormData.password,
+    //   });
+    //   const userdata = signupData.find((data) => {
+    //     return (
+    //       data.username === loginFormData.usernamelogin &&
+    //       data.password === loginFormData.passwordlogin
+    //     );
+    //   });
+
+    //   console.log(userdata);
+    //   toast.success("Login Successful", toastConfig);
+    //   dispatch(
+    //     loginReducers.loginButtonHandlerReducers({
+    //       status: true,
+    //       userdata: userdata,
+    //     })
+    //   );
+    // } else {
     if (loginFormData.usernamelogin.length === 0) {
       toast.warn("Please enter username", toastConfig);
       return;
@@ -120,9 +144,9 @@ function LoginPage() {
       })
     );
 
-    // setTimeout(() => {
-    //   navigate("/");
-    // }, 1800);
+    setTimeout(() => {
+      navigate("/");
+    }, 1800);
   }
 
   function emailCheckBeforeSignUp(email) {
@@ -212,6 +236,20 @@ function LoginPage() {
     });
     dispatch(signUpReducers.signupButtonHandlerReducer(signUpFormData));
     toast.success("Sign Up Successful", toastConfig);
+    setloginForm(true);
+    setsignUpForm(false);
+    // loginFormHandler("afterSignUp");
+    // dispatch(
+    //   loginReducers.loginButtonHandlerReducers({
+    //     status: true,
+    //     userdata: {
+    //       username: signUpFormData.username,
+    //       name: signUpFormData.name,
+    //       password: signUpFormData.password,
+    //       email: signUpFormData.email,
+    //     },
+    //   })
+    // );
     // setTimeout(() => {
     //   navigate("/");
     // }, 1800);
@@ -310,7 +348,7 @@ function LoginPage() {
                   <form
                     onSubmit={(e) => {
                       e.preventDefault();
-                      loginFormHandler();
+                      loginFormHandler("login");
                     }}
                   >
                     <div className="login-tag-inputfields">
