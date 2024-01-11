@@ -65,7 +65,13 @@
   letter-spacing: -0.16px;
   color: white;
 }
-
+.error-class-orderform {
+  color: red;
+  position: absolute;
+  top: 80px;
+  right: 10px;
+  margin: 0;
+}
 .input-holder-orderform > input::placeholder {
   font-size: 15px;
   font-style: normal;
@@ -108,4 +114,28 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .outer-order-form-holder {
+    flex-wrap: wrap;
+  }
+
+  .outer-order-form-holder > div {
+    width: 100%;
+  }
+
+  .left-heading-holder-orderform > h3 {
+    font-size: 27px;
+  }
+  .left-heading-holder-orderform > p {
+    font-size: 20px;
+  }
+  .input-holder-orderform > button {
+    max-width: 40% !important;
+    font-size: 19px;
+  }
+  .input-holder-orderform > label {
+    font-size: 15px;
+  }
 }

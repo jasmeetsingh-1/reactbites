@@ -98,15 +98,7 @@ function OrderForm() {
                   onChange={formik.handleChange}
                 />
                 {formik.errors.phonenumber && formik.touched.phonenumber ? (
-                  <p
-                    style={{
-                      color: "red",
-                      position: "absolute",
-                      top: "75px",
-                      right: "0",
-                      margin: "0",
-                    }}
-                  >
+                  <p className="error-class-orderform">
                     {formik.errors.phonenumber}
                   </p>
                 ) : null}
@@ -124,15 +116,7 @@ function OrderForm() {
                   onChange={formik.handleChange}
                 />
                 {formik.errors.address && formik.touched.address ? (
-                  <p
-                    style={{
-                      color: "red",
-                      position: "absolute",
-                      top: "75px",
-                      right: "0",
-                      margin: "0",
-                    }}
-                  >
+                  <p className="error-class-orderform">
                     {formik.errors.address}
                   </p>
                 ) : null}
@@ -150,17 +134,7 @@ function OrderForm() {
                   onChange={formik.handleChange}
                 />
                 {formik.errors.city && formik.touched.city ? (
-                  <p
-                    style={{
-                      color: "red",
-                      position: "absolute",
-                      top: "75px",
-                      right: "0",
-                      margin: "0",
-                    }}
-                  >
-                    {formik.errors.city}
-                  </p>
+                  <p className="error-class-orderform">{formik.errors.city}</p>
                 ) : null}
               </div>
               <div className="input-holder-orderform">
@@ -176,17 +150,7 @@ function OrderForm() {
                   onChange={formik.handleChange}
                 />
                 {formik.errors.state && formik.touched.state ? (
-                  <p
-                    style={{
-                      color: "red",
-                      position: "absolute",
-                      top: "75px",
-                      right: "0",
-                      margin: "0",
-                    }}
-                  >
-                    {formik.errors.state}
-                  </p>
+                  <p className="error-class-orderform">{formik.errors.state}</p>
                 ) : null}
               </div>
               <div className="input-holder-orderform">
@@ -202,7 +166,7 @@ function OrderForm() {
           setOrderPlacedModal(false);
         }}
       />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

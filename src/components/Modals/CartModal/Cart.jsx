@@ -69,9 +69,7 @@ function Cart(props) {
                 onClick={(e) => {
                   e.preventDefault();
                   dispatch(cartItemReducers.cartItemClear());
-                  setTimeout(() => {
-                    props.closeCart();
-                  }, 500);
+                  props.closeCart();
                 }}
               >
                 Clear

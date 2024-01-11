@@ -6,15 +6,11 @@ import OrderPlacedAnimation from "../../../assets/OrderPlacedAnimation.json";
 import { useNavigate } from "react-router-dom";
 
 function OrderPlaced(props) {
-  const [showModal, setShowModal] = useState(true);
   const navigate = useNavigate();
   return (
-    // <Modal show={props.show} onHide={props.onHide}>
     <Modal
-      show={showModal}
-      onHide={() => {
-        setShowModal(false);
-      }}
+      show={props.show}
+      onHide={props.onHide}
       contentClassName="main-modal-orderplacedModal"
     >
       <div className="animation-holder-orderPlacedModal">
