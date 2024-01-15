@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../cssFIles/orderForm/orderform.css";
 import { useSelector, useDispatch } from "react-redux";
 // import { ordersReducers } from "../redux-store/store";
 import { signUpReducers } from "../redux-store/store";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import Footer from "../footer/footer";
 import OrderPlaced from "../Modals/OrderPlacedModal/OrderPlacedModal";
 
 function OrderForm() {
@@ -20,6 +19,7 @@ function OrderForm() {
 
   const initialValues = {
     name: loginData.data.name,
+    email: loginData.data.email,
     phonenumber: "",
     address: "",
     city: "",
@@ -28,7 +28,11 @@ function OrderForm() {
 
   const validation = Yup.object({
     name: Yup.string().required(""),
-    phonenumber: Yup.number().required("Enter phone number"),
+    phonenumber: Yup.string()
+      .matches(/^[^0-5]/, "Enter valid phone number")
+      .matches(/^\d+$/, "Enter valid phone number")
+      .required("Enter Phone number")
+      .length(10, "Enter 10 Digits phone number"),
     address: Yup.string().required("Enter Address"),
     city: Yup.string().required("Enter City"),
     state: Yup.string().required("Enter State"),
@@ -48,9 +52,11 @@ function OrderForm() {
       orderTotal: cartItems.totalAmount,
       cartItems: cartItems.cart,
     };
+    console.log("orderpaylad>>>>", orderPayload);
+    setOrderPlacedModal(true);
+    return;
     dispatch(signUpReducers.addToOrders(orderPayload));
     formik.resetForm();
-    setOrderPlacedModal(true);
   };
 
   const formik = useFormik({
@@ -58,6 +64,10 @@ function OrderForm() {
     validationSchema: validation,
     onSubmit: OrderPlacedFromSubmitHandle,
   });
+
+  useEffect(() => {
+    console.log("length>>>", formik.values.phonenumber.length);
+  }, [formik.values]);
 
   return (
     <>
@@ -71,19 +81,37 @@ function OrderForm() {
           </div>
           <div>
             <form onSubmit={formik.handleSubmit}>
-              <div className="input-holder-orderform">
-                <label htmlFor="username">
-                  NAME<span style={{ color: "red" }}>*</span>
-                </label>
-                <input
-                  name="username"
-                  id="username"
-                  value={capitalizeFirstLetter(loginData.data.name)}
-                  disabled
-                  placeholder="ENTER YOUR NAME"
-                  style={{ cursor: "not-allowed" }}
-                  onChange={formik.handleChange}
-                />
+              <div className="input-holder-orderform invalid-form-holder">
+                <div className="invalid-field-holder-orderform">
+                  <label htmlFor="username">
+                    NAME<span style={{ color: "red" }}>*</span>
+                  </label>
+                  <input
+                    name="username"
+                    id="username"
+                    value={capitalizeFirstLetter(loginData.data.name)}
+                    disabled
+                    placeholder="ENTER YOUR NAME"
+                    style={{ cursor: "not-allowed", color: "#ffffffab" }}
+                    onChange={formik.handleChange}
+                  />
+                </div>
+
+                <div className="invalid-field-holder-orderform">
+                  <label htmlFor="email">
+                    EMAIL<span style={{ color: "red" }}>*</span>
+                  </label>
+                  <input
+                    name="email"
+                    id="email"
+                    // value={capitalizeFirstLetter(loginData.data.name)}
+                    value={formik.values.email}
+                    disabled
+                    placeholder="ENTER YOUR EMAIL"
+                    style={{ cursor: "not-allowed", color: "#ffffffab" }}
+                    onChange={formik.handleChange}
+                  />
+                </div>
               </div>
               <div className="input-holder-orderform">
                 <label htmlFor="phonenumber">
@@ -95,7 +123,11 @@ function OrderForm() {
                   type="number"
                   placeholder="ENTER YOUR PHONE NUMBER"
                   value={formik.values.phonenumber}
-                  onChange={formik.handleChange}
+                  onChange={(e) => {
+                    // if (formik.values.phonenumber.length <= 10)
+                    console.log("value>>>", e.target.value);
+                    formik.handleChange(e);
+                  }}
                 />
                 {formik.errors.phonenumber && formik.touched.phonenumber ? (
                   <p className="error-class-orderform">

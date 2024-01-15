@@ -12,7 +12,6 @@ function Cart(props) {
   const loginStore = useSelector((state) => state.loginStore);
 
   const handleOrderSubmit = () => {
-    console.log("button clicked");
     props.closeCart();
     if (loginStore.isloggedIn) navigate("/order");
     else navigate("/login");
