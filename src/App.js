@@ -6,6 +6,7 @@ import { useState } from "react";
 import Cart from "./components/Modals/CartModal/Cart";
 import OrderForm from "./components/orderForm/orderform";
 import TempFile from "./components/temp/tempFiles";
+import MyProfile from "./components/profile/profile";
 
 function App() {
   const [showingCart, setShowingCart] = useState(false);
@@ -42,6 +43,16 @@ function App() {
       />
       <Route path="/login" exact element={<LoginPage />} />
       <Route exact path="/tempFile" element={<TempFile />} />
+      <Route
+        path="/my_profile"
+        element={
+          <>
+            <Header openCart={openingCart} />
+            <MyProfile />
+            {showingCart && <Cart closeCart={closingCart} />}
+          </>
+        }
+      />
     </Routes>
   );
 }

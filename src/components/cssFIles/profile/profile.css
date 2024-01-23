@@ -1,0 +1,48 @@
+.profile-css-main-div {
+  border-radius: 6px;
+  background: #d9d9d9;
+  /* width: max-content; */
+  min-width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin: 0 3rem;
+}
+
+.profile-css-menu-div-holder {
+  width: max-content;
+  border-right: 1px solid #858585;
+  padding: 1rem 2rem;
+}
+
+.profile-css-form-div-holder {
+  width: 70%;
+  border: 1px solid black;
+  margin: 0.5rem;
+  padding: 1rem;
+}
+
+.profile-css-menu-active {
+  color: #1c1c1c !important;
+}
+
+.profile-css-menu-items {
+  cursor: pointer;
+  color: #858585;
+  font-size: 25px;
+  font-weight: 600;
+  display: flex;
+  gap: 1.7rem;
+  margin: 50px 10px;
+}
+
+.profile-css-menu-heading {
+  cursor: pointer;
+  color: #1c1c1c;
+  font-weight: 900;
+  font-size: 1.5rem;
+  margin: 2px 5px;
+}
