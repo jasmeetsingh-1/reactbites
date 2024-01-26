@@ -1,6 +1,6 @@
 .profile-css-menu-div-holder {
   width: max-content;
-  border-right: 1px solid #858585;
+  /* border-right: 1px solid #858585; */
   padding: 1rem 2rem;
 }
 
@@ -11,11 +11,11 @@
 .profile-css-menu-items {
   cursor: pointer;
   color: #858585;
-  font-size: 25px;
+  font-size: 24px;
   font-weight: 600;
   display: flex;
   gap: 1.7rem;
-  margin: 50px 10px;
+  margin: 13px 10px;
 }
 
 .profile-css-menu-heading {

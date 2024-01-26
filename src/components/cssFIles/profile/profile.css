@@ -1,31 +1,102 @@
 .profile-css-main-div {
   border-radius: 6px;
   background: #d9d9d9;
-  /* width: max-content; */
-  min-width: 80%;
+  width: max-content;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  height: -moz-fit-content;
-  height: fit-content;
+  /* justify-content: space-between; */
+  align-items: stretch;
+  height: 100%;
   margin: 0 3rem;
 }
 
 .profile-css-form-div-holder {
   width: 70%;
-  height: 360px;
-  margin: 0.5rem;
-  padding: 1rem;
+  height: max-content;
+  border-left: 1px solid #858585;
+  padding: 1rem 7rem;
 }
 
 .profile-change-div-heading {
+  margin-bottom: 2rem;
   color: #1c1c1c;
   font-weight: 900;
   font-size: 1.5rem;
 }
 
 .profile-edit-form-row {
+  margin-top: 10px;
   display: flex;
-  border: 1px solid red;
+  flex-direction: column;
+}
+
+.profile-edit-form-row > label {
+  margin: 0px;
+  color: #1c1c1c;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.profile-edit-form-row > div > label {
+  margin: 0px;
+  color: #1c1c1c;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.profile-edit-form-row > input {
+  padding: 0.3rem 1rem;
+  border-radius: 5px;
+  border: 2px solid #858585;
+  background: #fff;
+  color: #858585;
+  /* font-family: Roboto; */
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.profile-edit-form-row > div > input {
+  padding: 0.3rem 1rem;
+  border-radius: 5px;
+  border: 2px solid #858585;
+  background: #fff;
+  color: #858585;
+  /* font-family: Roboto; */
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.profile-edit-form-row > input:focus {
+  color: black;
+}
+
+.profile-edit-form-row > div > input:focus {
+  color: black;
+}
+
+.width-div-container-profile-css {
+  width: 47%;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-edit-submit-button {
+  display: flex;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.profile-edit-submit-button > button {
+  cursor: pointer;
+  border-radius: 5px;
+  border: 2px solid rgb(138 43 6 / 84%);
+  background: #fff;
+  color: rgb(138 43 6 / 84%);
+  /* font-family: Roboto; */
+  font-size: 24px;
+  padding: 5px 40px;
+}
+
+.profile-edit-submit-button > button:hover {
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5) inset;
 }

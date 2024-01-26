@@ -1,21 +1,29 @@
 import React, { useEffect, useState } from "react";
 import "../cssFIles/profile/profile.css";
 import Sidebar from "./sidebar";
+import { useSelector } from "react-redux";
+
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
 function MyProfile() {
   const [activeMenu, setActiveMenu] = useState(1);
+  const [passwordChanging, setPasswordChanging] = useState(false);
+  const loginData = useSelector((state) => state.loginStore);
   const initialValues = {
-    name: "name test",
-    username: "username test",
-    email: "email test",
-    address: "address test",
+    name: loginData.data.name,
+    username: loginData.data.username,
+    email: loginData.data.email,
+    // address: "address test",
     phonenumber: "phonenumber",
-    city: "city test",
-    state: "state test",
-    password: "password test",
-    confirmpassword: "confirm password test",
+    // city: "city test",
+    // state: "state test",
+    password: loginData.data.password,
+    confirmpassword: loginData.data.password,
   };
+
+  useEffect(() => {
+    console.log({ loginData });
+  }, []);
   return (
     <>
       <div
@@ -34,12 +42,15 @@ function MyProfile() {
               >
                 {({ values }) => (
                   <Form>
-                    <div className="profile-edit-form-row">
-                      <div>
+                    <div
+                      className="profile-edit-form-row"
+                      style={{ flexDirection: "row", gap: "2rem" }}
+                    >
+                      <div className="width-div-container-profile-css">
                         <label htmlFor="name">Name</label>
                         <Field name="name" id="name" value={values.name} />
                       </div>
-                      <div>
+                      <div className="width-div-container-profile-css">
                         <label htmlFor="username">Username</label>
                         <Field
                           name="username"
@@ -52,41 +63,102 @@ function MyProfile() {
                       <label htmlFor="email">Email</label>
                       <Field name="email" id="email" value={values.email} />
                     </div>
-                    <div className="profile-edit-form-row">
-                      <label htmlFor="address">Adress</label>
+                    {/* <div className="profile-edit-form-row">
+                      <label htmlFor="address">Address</label>
                       <Field
                         name="address"
                         id="address"
                         value={values.address}
                       />
-                    </div>
+                    </div> */}
                     <div className="profile-edit-form-row">
-                      <label htmlFor="phonenumber">Contact No</label>
+                      <label htmlFor="phonenumber">Contact Number</label>
                       <Field
                         name="phonenumber"
                         id="phonenumber"
                         value={values.phonenumber}
                       />
                     </div>
-                    <div className="profile-edit-form-row">
-                      <label htmlFor="city">City</label>
-                      <Field name="city" id="city" value={values.city} />
+                    {/* <div
+                      className="profile-edit-form-row"
+                      style={{ flexDirection: "row", gap: "2rem" }}
+                    >
+                      <div className="width-div-container-profile-css">
+                        <label htmlFor="city">City</label>
+                        <Field name="city" id="city" value={values.city} />
+                      </div>
+                      <div className="width-div-container-profile-css">
+                        <label htmlFor="state">State</label>
+                        <Field name="state" id="state" value={values.state} />
+                      </div>
+                    </div> */}
 
-                      <label htmlFor="username">State</label>
-                      <Field name="state" id="state" value={values.state} />
-                    </div>
+                    {passwordChanging ? (
+                      <div
+                        className="profile-edit-form-row"
+                        style={{ flexDirection: "row", gap: "2rem" }}
+                      >
+                        <div className="width-div-container-profile-css">
+                          <label htmlFor="password">Password</label>
+                          <Field
+                            type="password"
+                            name="password"
+                            id="password"
+                            value={values.password}
+                          />
+                        </div>
+                        <div className="width-div-container-profile-css">
+                          <label htmlFor="confirmpassword">
+                            Confirm Password
+                          </label>
+                          <Field
+                            type="password"
+                            name="confirmpassword"
+                            id="confirmpassword"
+                            value={values.confirmpassword}
+                          />
+                        </div>
+                      </div>
+                    ) : (
+                      <div
+                        className="profile-edit-form-row"
+                        style={{ position: "relative" }}
+                      >
+                        <span
+                          style={{
+                            color: "blue",
+                            textDecoration: "underline",
+                            position: "absolute",
+                            right: "0",
+                            cursor: "pointer",
+                          }}
+                          onClick={() => {
+                            setPasswordChanging(true);
+                          }}
+                        >
+                          Change?
+                        </span>
+                        <label htmlFor="password">Password</label>
+                        <Field
+                          type="password"
+                          name="password"
+                          id="password"
+                          value={values.password}
+                        />
+                      </div>
+                    )}
 
-                    <div className="profile-edit-form-row">
-                      <label htmlFor="password">Password</label>
-                      <Field
-                        type="password"
-                        name="password"
-                        id="password"
-                        value={values.password}
-                      />
-                    </div>
                     <div className="profile-edit-submit-button">
-                      <button type="submit">Submit</button>
+                      <button>Cancel</button>
+                      <button
+                        style={{
+                          background: "rgb(138 43 6 / 84%)",
+                          color: "#fff",
+                        }}
+                        type="submit"
+                      >
+                        Save
+                      </button>
                     </div>
                   </Form>
                 )}
