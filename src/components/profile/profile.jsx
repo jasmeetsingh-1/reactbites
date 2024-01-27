@@ -5,7 +5,8 @@ import { useSelector } from "react-redux";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import Lottie from "lottie-react";
+import MyProfileAnimation from "../../assets/my_profile_annimation.json";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 library.add(faEye);
 
@@ -33,8 +34,19 @@ function MyProfile() {
       >
         <div className="profile-css-main-div">
           <Sidebar activeMenu={activeMenu} setActiveMenu={setActiveMenu} />
+
           <div className="profile-css-form-div-holder">
-            <div className="profile-change-div-heading">Edit Profile</div>
+            <div className="profile-change-div-heading">
+              <div className="profile-annimation-holder-div">
+                <Lottie
+                  animationData={MyProfileAnimation}
+                  loop={true}
+                  autoplay={true}
+                />
+              </div>
+              Edit Profile
+            </div>
+
             <div className="profile-change-div-form">
               <Formik
                 initialValues={initialValues}
@@ -100,16 +112,34 @@ function MyProfile() {
                         className="profile-edit-form-row"
                         style={{ flexDirection: "row", gap: "2rem" }}
                       >
-                        <div className="width-div-container-profile-css">
+                        <div
+                          className="width-div-container-profile-css"
+                          style={{ position: "relative" }}
+                        >
+                          <FontAwesomeIcon
+                            icon={faEye}
+                            style={{
+                              position: "absolute",
+                              right: "7px",
+                              bottom: "20%",
+                              cursor: "pointer",
+                            }}
+                            onClick={() => {
+                              setviewingPassword(true);
+                            }}
+                          />
                           <label htmlFor="password">Password</label>
                           <Field
-                            type="password"
+                            type={viewingPassword ? "text" : "password"}
                             name="password"
                             id="password"
                             value={values.password}
                           />
                         </div>
-                        <div className="width-div-container-profile-css">
+                        <div
+                          className="width-div-container-profile-css"
+                          style={{ position: "relative" }}
+                        >
                           <label htmlFor="confirmpassword">
                             Confirm Password
                           </label>

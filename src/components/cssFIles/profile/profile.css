@@ -22,6 +22,7 @@
   color: #1c1c1c;
   font-weight: 900;
   font-size: 1.5rem;
+  position: relative;
 }
 
 .profile-edit-form-row {
@@ -99,4 +100,9 @@
 
 .profile-edit-submit-button > button:hover {
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5) inset;
+}
+
+.profile-annimation-holder-div {
+  position: absolute;
+  right: 0;
 }
