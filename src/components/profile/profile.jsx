@@ -8,6 +8,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Lottie from "lottie-react";
 import MyProfileAnimation from "../../assets/my_profile_annimation.json";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import MyOrders from "./profileOrders";
+import AboutUs from "./Aboutus";
 library.add(faEye);
 
 function MyProfile() {
@@ -34,50 +36,50 @@ function MyProfile() {
       >
         <div className="profile-css-main-div">
           <Sidebar activeMenu={activeMenu} setActiveMenu={setActiveMenu} />
-
-          <div className="profile-css-form-div-holder">
-            <div className="profile-change-div-heading">
-              <div className="profile-annimation-holder-div">
-                <Lottie
-                  animationData={MyProfileAnimation}
-                  loop={true}
-                  autoplay={true}
-                />
+          {activeMenu === 1 ? (
+            <div className="profile-css-form-div-holder">
+              <div className="profile-change-div-heading">
+                <div className="profile-annimation-holder-div">
+                  <Lottie
+                    animationData={MyProfileAnimation}
+                    loop={true}
+                    autoplay={true}
+                  />
+                </div>
+                Edit Profile
               </div>
-              Edit Profile
-            </div>
 
-            <div className="profile-change-div-form">
-              <Formik
-                initialValues={initialValues}
-                onSubmit={(values) => {
-                  console.log("values", values);
-                }}
-              >
-                {({ values, handleChange }) => (
-                  <Form>
-                    <div
-                      className="profile-edit-form-row"
-                      style={{ flexDirection: "row", gap: "2rem" }}
-                    >
-                      <div className="width-div-container-profile-css">
-                        <label htmlFor="name">Name</label>
-                        <Field name="name" id="name" value={values.name} />
+              <div className="profile-change-div-form">
+                <Formik
+                  initialValues={initialValues}
+                  onSubmit={(values) => {
+                    console.log("values", values);
+                  }}
+                >
+                  {({ values, handleChange }) => (
+                    <Form>
+                      <div
+                        className="profile-edit-form-row"
+                        style={{ flexDirection: "row", gap: "2rem" }}
+                      >
+                        <div className="width-div-container-profile-css">
+                          <label htmlFor="name">Name</label>
+                          <Field name="name" id="name" value={values.name} />
+                        </div>
+                        <div className="width-div-container-profile-css">
+                          <label htmlFor="username">Username</label>
+                          <Field
+                            name="username"
+                            id="username"
+                            value={values.username}
+                          />
+                        </div>
                       </div>
-                      <div className="width-div-container-profile-css">
-                        <label htmlFor="username">Username</label>
-                        <Field
-                          name="username"
-                          id="username"
-                          value={values.username}
-                        />
+                      <div className="profile-edit-form-row">
+                        <label htmlFor="email">Email</label>
+                        <Field name="email" id="email" value={values.email} />
                       </div>
-                    </div>
-                    <div className="profile-edit-form-row">
-                      <label htmlFor="email">Email</label>
-                      <Field name="email" id="email" value={values.email} />
-                    </div>
-                    {/* <div className="profile-edit-form-row">
+                      {/* <div className="profile-edit-form-row">
                       <label htmlFor="address">Address</label>
                       <Field
                         name="address"
@@ -85,15 +87,15 @@ function MyProfile() {
                         value={values.address}
                       />
                     </div> */}
-                    <div className="profile-edit-form-row">
-                      <label htmlFor="phonenumber">Contact Number</label>
-                      <Field
-                        name="phonenumber"
-                        id="phonenumber"
-                        value={values.phonenumber}
-                      />
-                    </div>
-                    {/* <div
+                      <div className="profile-edit-form-row">
+                        <label htmlFor="phonenumber">Contact Number</label>
+                        <Field
+                          name="phonenumber"
+                          id="phonenumber"
+                          value={values.phonenumber}
+                        />
+                      </div>
+                      {/* <div
                       className="profile-edit-form-row"
                       style={{ flexDirection: "row", gap: "2rem" }}
                     >
@@ -107,15 +109,69 @@ function MyProfile() {
                       </div>
                     </div> */}
 
-                    {passwordChanging ? (
-                      <div
-                        className="profile-edit-form-row"
-                        style={{ flexDirection: "row", gap: "2rem" }}
-                      >
+                      {passwordChanging ? (
                         <div
-                          className="width-div-container-profile-css"
+                          className="profile-edit-form-row"
+                          style={{ flexDirection: "row", gap: "2rem" }}
+                        >
+                          <div
+                            className="width-div-container-profile-css"
+                            style={{ position: "relative" }}
+                          >
+                            <FontAwesomeIcon
+                              icon={faEye}
+                              style={{
+                                position: "absolute",
+                                right: "7px",
+                                bottom: "20%",
+                                cursor: "pointer",
+                              }}
+                              onClick={() => {
+                                setviewingPassword(true);
+                              }}
+                            />
+                            <label htmlFor="password">Password</label>
+                            <Field
+                              type={viewingPassword ? "text" : "password"}
+                              name="password"
+                              id="password"
+                              value={values.password}
+                            />
+                          </div>
+                          <div
+                            className="width-div-container-profile-css"
+                            style={{ position: "relative" }}
+                          >
+                            <label htmlFor="confirmpassword">
+                              Confirm Password
+                            </label>
+                            <Field
+                              type="password"
+                              name="confirmpassword"
+                              id="confirmpassword"
+                              value={values.confirmpassword}
+                            />
+                          </div>
+                        </div>
+                      ) : (
+                        <div
+                          className="profile-edit-form-row"
                           style={{ position: "relative" }}
                         >
+                          <span
+                            style={{
+                              color: "blue",
+                              textDecoration: "underline",
+                              position: "absolute",
+                              right: "0",
+                              cursor: "pointer",
+                            }}
+                            onClick={() => {
+                              setPasswordChanging(true);
+                            }}
+                          >
+                            Change?
+                          </span>
                           <FontAwesomeIcon
                             icon={faEye}
                             style={{
@@ -128,89 +184,40 @@ function MyProfile() {
                               setviewingPassword(true);
                             }}
                           />
+
                           <label htmlFor="password">Password</label>
                           <Field
                             type={viewingPassword ? "text" : "password"}
                             name="password"
                             id="password"
                             value={values.password}
+                            disabled={true}
                           />
                         </div>
-                        <div
-                          className="width-div-container-profile-css"
-                          style={{ position: "relative" }}
-                        >
-                          <label htmlFor="confirmpassword">
-                            Confirm Password
-                          </label>
-                          <Field
-                            type="password"
-                            name="confirmpassword"
-                            id="confirmpassword"
-                            value={values.confirmpassword}
-                          />
-                        </div>
-                      </div>
-                    ) : (
-                      <div
-                        className="profile-edit-form-row"
-                        style={{ position: "relative" }}
-                      >
-                        <span
-                          style={{
-                            color: "blue",
-                            textDecoration: "underline",
-                            position: "absolute",
-                            right: "0",
-                            cursor: "pointer",
-                          }}
-                          onClick={() => {
-                            setPasswordChanging(true);
-                          }}
-                        >
-                          Change?
-                        </span>
-                        <FontAwesomeIcon
-                          icon={faEye}
-                          style={{
-                            position: "absolute",
-                            right: "7px",
-                            bottom: "20%",
-                            cursor: "pointer",
-                          }}
-                          onClick={() => {
-                            setviewingPassword(true);
-                          }}
-                        />
+                      )}
 
-                        <label htmlFor="password">Password</label>
-                        <Field
-                          type={viewingPassword ? "text" : "password"}
-                          name="password"
-                          id="password"
-                          value={values.password}
-                          disabled={true}
-                        />
+                      <div className="profile-edit-submit-button">
+                        <button>Cancel</button>
+                        <button
+                          style={{
+                            background: "rgb(138 43 6 / 84%)",
+                            color: "#fff",
+                          }}
+                          type="submit"
+                        >
+                          Save
+                        </button>
                       </div>
-                    )}
-
-                    <div className="profile-edit-submit-button">
-                      <button>Cancel</button>
-                      <button
-                        style={{
-                          background: "rgb(138 43 6 / 84%)",
-                          color: "#fff",
-                        }}
-                        type="submit"
-                      >
-                        Save
-                      </button>
-                    </div>
-                  </Form>
-                )}
-              </Formik>
+                    </Form>
+                  )}
+                </Formik>
+              </div>
             </div>
-          </div>
+          ) : activeMenu === 2 ? (
+            <MyOrders />
+          ) : (
+            <AboutUs />
+          )}
         </div>
       </div>
     </>

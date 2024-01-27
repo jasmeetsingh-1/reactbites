@@ -3,14 +3,13 @@ import "../cssFIles/header/header.css";
 import mealsImg from "../../assets/meals.jpg";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import Profile from "../Modals/ProfileModal/profile";
 import { Modal } from "react-bootstrap";
 
 function Header(props) {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [totalCartItems, settotalCartItems] = useState(0);
-  const [showProfile, SetShowProfile] = useState(false);
+  // const [showProfile, SetShowProfile] = useState(false);
   const loginData = useSelector((state) => state.loginStore);
   const cartItems = useSelector((state) => state.cartStore);
 
@@ -34,12 +33,6 @@ function Header(props) {
 
   return (
     <>
-      <Profile
-        show={showProfile}
-        onHide={() => {
-          SetShowProfile(false);
-        }}
-      />
       <div className="full-width-div">
         <div className="main-outer-div-header">
           <div className="heading-div-header">
@@ -60,7 +53,7 @@ function Header(props) {
                 if (!loginData.isloggedIn) {
                   navigate("/login");
                 } else {
-                  SetShowProfile(true);
+                  navigate("/my_profile");
                 }
               }}
             >

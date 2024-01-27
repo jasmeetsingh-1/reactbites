@@ -27,7 +27,8 @@
 .profile-holder-outer-div {
   display: flex;
   gap: 1rem;
-  padding: 2rem;
+  padding: 3rem 4rem;
+  border-left: 1px solid #858585;
 }
 
 .profile-modal-left-holder {

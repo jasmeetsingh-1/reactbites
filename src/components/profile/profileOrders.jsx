@@ -1,29 +1,12 @@
-import { Modal, ModalBody, Table } from "react-bootstrap";
-import { useEffect, useState } from "react";
-import "../cssFiles/ProfileModal/profileModal.css";
-import { Field, Formik } from "formik";
-import amount_image from "../../../assets/order_amount_profileModal.svg";
-import date_image from "../../../assets/order_Date_profileModal.svg";
-import order_id_image from "../../../assets/order_id_image_profileModal.svg";
+import amount_image from "../../assets/order_amount_profileModal.svg";
+import date_image from "../../assets/order_Date_profileModal.svg";
+import order_id_image from "../../assets/order_id_image_profileModal.svg";
+import { Table } from "react-bootstrap";
+import "../cssFIles/profile/profileOrders.css";
 
-const initialValues = {
-  name: "Jasmeet",
-  username: "jasmeet_test",
-  email: "jasmeet@gmail.com",
-};
-
-const onSubmitHandler = (values) => {
-  console.log("formik values>>>>", values);
-};
-function Profile(props) {
-  const [formDisabled, setformDisabled] = useState(true);
-
+function MyOrders() {
   return (
-    <Modal
-      show={props.show}
-      onHide={props.onHide}
-      contentClassName="modal-resize-profileModal"
-    >
+    <>
       <div className="profile-holder-outer-div">
         <div className="profile-modal-left-holder">
           <div className="gradient-border">
@@ -120,8 +103,7 @@ function Profile(props) {
           </div>
         </div>
       </div>
-    </Modal>
+    </>
   );
 }
-
-export default Profile;
+export default MyOrders;

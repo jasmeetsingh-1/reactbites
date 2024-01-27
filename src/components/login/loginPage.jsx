@@ -5,7 +5,6 @@ import { loginReducers, signUpReducers } from "../redux-store/store";
 import { useDispatch, useSelector } from "react-redux";
 
 import "../cssFIles/login/loginPage.css";
-import Profile from "../Modals/ProfileModal/profile";
 import { useNavigate } from "react-router-dom";
 // import image from "../../assets/welcomefood.jpg";
 // import image from "../../assets/welcomefood.svg";
