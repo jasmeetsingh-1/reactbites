@@ -41,7 +41,7 @@
 
 .profile-modal-left-holder > div > div > span,
 .profile-modal-right-holder > div > span {
-  color: #858585;
+  color: #1f1e1e;
   font-size: 16px;
   font-style: italic;
   font-weight: 400;
@@ -93,7 +93,7 @@
 .gradient-border {
   /* width: 300px;  */
   /* margin: 20px auto; */
-  background-color: white;
+  /* background-color: white; */
   position: relative;
 }
 
@@ -103,7 +103,12 @@
   position: absolute;
   width: 100%;
   height: 2px; /* Adjust the border thickness as needed */
-  background: linear-gradient(to right, white 0%, #dddddd 50%, white 100%);
+  background: linear-gradient(
+    to right,
+    lightgrey 0%,
+    #1e181833 50%,
+    lightgrey 100%
+  );
   top: 0;
 }
 

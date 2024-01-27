@@ -42,7 +42,7 @@ function MyProfile() {
                 <div className="profile-annimation-holder-div">
                   <Lottie
                     animationData={MyProfileAnimation}
-                    loop={true}
+                    loop={false}
                     autoplay={true}
                   />
                 </div>
@@ -77,7 +77,13 @@ function MyProfile() {
                       </div>
                       <div className="profile-edit-form-row">
                         <label htmlFor="email">Email</label>
-                        <Field name="email" id="email" value={values.email} />
+                        <Field
+                          name="email"
+                          id="email"
+                          value={values.email}
+                          disabled={true}
+                          style={{ cursor: "not-allowed" }}
+                        />
                       </div>
                       {/* <div className="profile-edit-form-row">
                       <label htmlFor="address">Address</label>
@@ -127,7 +133,7 @@ function MyProfile() {
                                 cursor: "pointer",
                               }}
                               onClick={() => {
-                                setviewingPassword(true);
+                                setviewingPassword(!viewingPassword);
                               }}
                             />
                             <label htmlFor="password">Password</label>
@@ -181,7 +187,7 @@ function MyProfile() {
                               cursor: "pointer",
                             }}
                             onClick={() => {
-                              setviewingPassword(true);
+                              setviewingPassword(!viewingPassword);
                             }}
                           />
 
