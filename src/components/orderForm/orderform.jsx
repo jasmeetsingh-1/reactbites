@@ -20,7 +20,7 @@ function OrderForm() {
   const initialValues = {
     name: loginData.data.name,
     email: loginData.data.email,
-    phonenumber: "",
+    phonenumber: loginData.data.phonenumber,
     address: "",
     city: "",
     state: "",

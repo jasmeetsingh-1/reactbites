@@ -47,6 +47,7 @@ const SignUpSlice = createSlice({
         name: action.payload.name,
         password: action.payload.password,
         email: action.payload.email,
+        phonenumber: action.payload.phonenumber,
         orders: [],
       };
       console.log("new signup data>>>", newSignUp);

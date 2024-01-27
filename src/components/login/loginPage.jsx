@@ -28,6 +28,7 @@ function LoginPage() {
     confirmpassword: "",
     email: "",
     name: "",
+    phonenumber: "",
   });
 
   const toastConfig = {
@@ -174,6 +175,26 @@ function LoginPage() {
     return ans;
   }
 
+  function phonenumberCheckBeforeSignUp(phonenumber) {
+    //function will return true if phone number is not valid
+    let ans = false;
+    if (phonenumber.length !== 10) {
+      ans = true;
+    } else {
+      const firstDigit = phonenumber[0];
+      if (
+        firstDigit == 1 ||
+        firstDigit == 2 ||
+        firstDigit == 3 ||
+        firstDigit == 4 ||
+        firstDigit == 5
+      ) {
+        ans = true;
+      }
+    }
+    return ans;
+  }
+
   function signUpFormHandler() {
     if (
       signUpFormData.username.length === 0 ||
@@ -227,12 +248,18 @@ function LoginPage() {
       return;
     }
 
+    if (phonenumberCheckBeforeSignUp(signUpFormData.phonenumber)) {
+      toast.error("Invalid Phone Number", toastConfig);
+      return;
+    }
+
     setSignUpFormData({
       username: signUpFormData.username.trim(),
       name: signUpFormData.name.trim(),
       password: signUpFormData.password.trim(),
       confirmpassword: signUpFormData.confirmpassword.trim(),
       email: signUpFormData.email.trim(),
+      phonenumber: signUpFormData.phonenumber.trim(),
     });
     dispatch(signUpReducers.signupButtonHandlerReducer(signUpFormData));
     toast.success("Sign Up Successful", toastConfig);
@@ -476,6 +503,28 @@ function LoginPage() {
                             ...signUpFormData,
                             email: emailinput,
                           });
+                        }}
+                      />
+                    </div>
+                    <div className="signup-form-tag-inputfields">
+                      <label htmlFor="email">PHONE No.</label>
+                      <input
+                        id="phonenumber"
+                        name="phonenumber"
+                        type="text"
+                        value={signUpFormData.phonenumber}
+                        style={{ paddingLeft: "10px" }}
+                        onChange={(e) => {
+                          if (
+                            /^[0-9]*$/.test(e.target.value) &&
+                            e.target.value.length <= 10
+                          ) {
+                            const phonenumberinput = e.target.value;
+                            setSignUpFormData({
+                              ...signUpFormData,
+                              phonenumber: phonenumberinput,
+                            });
+                          }
                         }}
                       />
                     </div>

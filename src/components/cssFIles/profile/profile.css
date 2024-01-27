@@ -47,7 +47,7 @@
 .profile-edit-form-row > input {
   padding: 0.3rem 1rem;
   border-radius: 5px;
-  border: 2px solid #858585;
+  border: 2px solid #8585858c;
   background: #fff;
   color: #858585;
   /* font-family: Roboto; */
@@ -58,7 +58,7 @@
 .profile-edit-form-row > div > input {
   padding: 0.3rem 1rem;
   border-radius: 5px;
-  border: 2px solid #858585;
+  border: 2px solid #8585858c;
   background: #fff;
   color: #858585;
   /* font-family: Roboto; */

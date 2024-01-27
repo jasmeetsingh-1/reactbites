@@ -2,28 +2,30 @@ import React, { useEffect, useState } from "react";
 import "../cssFIles/profile/profile.css";
 import Sidebar from "./sidebar";
 import { useSelector } from "react-redux";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { Formik, Form, Field, ErrorMessage } from "formik";
+library.add(faEye);
 
 function MyProfile() {
   const [activeMenu, setActiveMenu] = useState(1);
   const [passwordChanging, setPasswordChanging] = useState(false);
+  const [viewingPassword, setviewingPassword] = useState(false);
   const loginData = useSelector((state) => state.loginStore);
   const initialValues = {
     name: loginData.data.name,
     username: loginData.data.username,
     email: loginData.data.email,
     // address: "address test",
-    phonenumber: "phonenumber",
+    phonenumber: loginData.data.phonenumber,
     // city: "city test",
     // state: "state test",
     password: loginData.data.password,
     confirmpassword: loginData.data.password,
   };
 
-  useEffect(() => {
-    console.log({ loginData });
-  }, []);
   return (
     <>
       <div
@@ -40,7 +42,7 @@ function MyProfile() {
                   console.log("values", values);
                 }}
               >
-                {({ values }) => (
+                {({ values, handleChange }) => (
                   <Form>
                     <div
                       className="profile-edit-form-row"
@@ -138,12 +140,26 @@ function MyProfile() {
                         >
                           Change?
                         </span>
+                        <FontAwesomeIcon
+                          icon={faEye}
+                          style={{
+                            position: "absolute",
+                            right: "7px",
+                            bottom: "20%",
+                            cursor: "pointer",
+                          }}
+                          onClick={() => {
+                            setviewingPassword(true);
+                          }}
+                        />
+
                         <label htmlFor="password">Password</label>
                         <Field
-                          type="password"
+                          type={viewingPassword ? "text" : "password"}
                           name="password"
                           id="password"
                           value={values.password}
+                          disabled={true}
                         />
                       </div>
                     )}
