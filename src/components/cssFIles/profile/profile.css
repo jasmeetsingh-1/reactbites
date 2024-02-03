@@ -1,7 +1,9 @@
 .profile-css-main-div {
   border-radius: 6px;
   background: #d9d9d9;
-  width: max-content;
+  /* width: max-content; */
+  min-width: 80%;
+  max-width: 80%;
   display: flex;
   flex-direction: row;
   /* justify-content: space-between; */

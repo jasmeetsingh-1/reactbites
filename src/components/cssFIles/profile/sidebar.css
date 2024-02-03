@@ -2,6 +2,8 @@
   width: max-content;
   /* border-right: 1px solid #858585; */
   padding: 1rem 2rem;
+  max-width: 23%;
+  min-width: 23%;
 }
 
 .profile-css-menu-active {
@@ -15,7 +17,10 @@
   font-weight: 600;
   display: flex;
   gap: 1.7rem;
-  margin: 13px 10px;
+  margin: 20px 10px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .profile-css-menu-heading {

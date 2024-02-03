@@ -10,6 +10,7 @@ import MyProfileAnimation from "../../assets/my_profile_annimation.json";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import MyOrders from "./profileOrders";
 import AboutUs from "./Aboutus";
+
 library.add(faEye);
 
 function MyProfile() {
@@ -28,6 +29,11 @@ function MyProfile() {
     password: loginData.data.password,
     confirmpassword: loginData.data.password,
   };
+
+  useEffect(() => {
+    console.log("orders>>>", loginData.data.orders);
+    // setPasswordChanging(false);
+  }, []);
 
   return (
     <>
@@ -69,6 +75,8 @@ function MyProfile() {
                         <div className="width-div-container-profile-css">
                           <label htmlFor="username">Username</label>
                           <Field
+                            disabled={true}
+                            style={{ cursor: "not-allowed" }}
                             name="username"
                             id="username"
                             value={values.username}
@@ -162,7 +170,9 @@ function MyProfile() {
                       ) : (
                         <div
                           className="profile-edit-form-row"
-                          style={{ position: "relative" }}
+                          style={{
+                            position: "relative",
+                          }}
                         >
                           <span
                             style={{
@@ -193,6 +203,7 @@ function MyProfile() {
 
                           <label htmlFor="password">Password</label>
                           <Field
+                            style={{ cursor: "not-allowed" }}
                             type={viewingPassword ? "text" : "password"}
                             name="password"
                             id="password"

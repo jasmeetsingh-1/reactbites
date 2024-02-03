@@ -77,7 +77,7 @@ function Sidebar({ activeMenu, setActiveMenu }) {
           </span>
           Your Orders
         </div>
-        <div
+        {/* <div
           className={`profile-css-menu-items ${
             activeMenu === 3 ? "profile-css-menu-active" : ""
           }`}
@@ -107,7 +107,7 @@ function Sidebar({ activeMenu, setActiveMenu }) {
             </svg>
           </span>
           About Us
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -53,8 +53,8 @@ function OrderForm() {
       cartItems: cartItems.cart,
     };
     console.log("orderpaylad>>>>", orderPayload);
-    setOrderPlacedModal(true);
-    return;
+    // setOrderPlacedModal(true);
+    // return;
     dispatch(signUpReducers.addToOrders(orderPayload));
     formik.resetForm();
   };
@@ -64,10 +64,6 @@ function OrderForm() {
     validationSchema: validation,
     onSubmit: OrderPlacedFromSubmitHandle,
   });
-
-  useEffect(() => {
-    console.log("length>>>", formik.values.phonenumber.length);
-  }, [formik.values]);
 
   return (
     <>

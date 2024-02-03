@@ -26,11 +26,6 @@ const LoginSlice = createSlice({
   initialState: loginFormData,
   reducers: {
     loginButtonHandlerReducers(state, action) {
-      // return {
-      //   ...state,
-      //   isloggedIn: action.payload.status,
-      //   data: action.payload.userdata,
-      // };
       state.isloggedIn = action.payload.status;
       state.data = action.payload.userdata;
     },
@@ -52,16 +47,13 @@ const SignUpSlice = createSlice({
       };
       console.log("new signup data>>>", newSignUp);
       state.signupdata = [...state.signupdata, newSignUp];
-      // return {
-      //   ...state,
-      //   signupdata: [...state.signupdata, newSignUp],
-      // };
     },
     addToOrders(state, action) {
       console.log("action payload>>>", action.payload);
       const indexOFItem = state.signupdata.findIndex(
         (item) => item.email === action.payload.loginEmail
       );
+      // console.log("data to update:>>>>", state.signupdata[indexOFItem]);
       let newSignUpData;
       if (indexOFItem !== -1) {
         const updatedSignUpdata = state.signupdata[indexOFItem];
@@ -71,13 +63,15 @@ const SignUpSlice = createSlice({
           orderTotal: action.payload.orderTotal,
           orderItems: action.payload.cartItems,
         };
-        console.log(newOrder);
         newSignUpData = {
           ...updatedSignUpdata,
           orders: [...updatedSignUpdata.orders, newOrder],
         };
-
-        console.log("updatred", newSignUpData);
+        console.log("updated", newSignUpData);
+        const updatedItems = [...state.signupdata];
+        updatedItems[indexOFItem] = newSignUpData;
+        state.signupdata = [...updatedItems];
+        // look code from item already in cart and then manage stuff here bro
       }
     },
   },
@@ -108,11 +102,6 @@ const cartSlice = createSlice({
 
         state.cart = updatedItems;
         state.totalAmount = newTotalAmount;
-        // return {
-        //   ...state,
-        //   cart: updatedItems,
-        //   totalAmount: newTotalAmount,
-        // };
       } else {
         //new item to add in cart
         const updatedItems = state.cart.concat(action.payload);
@@ -135,11 +124,6 @@ const cartSlice = createSlice({
         );
         state.cart = updatedItems;
         state.totalAmount = newTotalAmount;
-        // return {
-        //   ...state,
-        //   cart: updatedItems,
-        //   totalAmount: newTotalAmount,
-        // };
       } else {
         //update the amount
         let newItem = {
@@ -150,21 +134,11 @@ const cartSlice = createSlice({
         updatedItems[indexOFItem] = newItem;
         state.cart = updatedItems;
         state.totalAmount = newTotalAmount;
-        // return {
-        //   ...state,
-        //   cart: updatedItems,
-        //   totalAmount: newTotalAmount,
-        // };
       }
     },
     cartItemClear(state) {
       state.cart = [];
       state.totalAmount = 0;
-      // return {
-      //   ...state,
-      //   cart: [],
-      //   totalAmount: 0,
-      // };
     },
   },
 });
