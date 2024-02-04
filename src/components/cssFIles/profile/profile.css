@@ -16,7 +16,7 @@
   width: 70%;
   height: max-content;
   border-left: 1px solid #858585;
-  padding: 3rem 5rem;
+  padding: 1rem 5rem;
 }
 
 .profile-change-div-heading {
@@ -96,7 +96,7 @@
   background: #fff;
   color: rgb(138 43 6 / 84%);
   /* font-family: Roboto; */
-  font-size: 24px;
+  font-size: 18px;
   padding: 5px 40px;
 }
 

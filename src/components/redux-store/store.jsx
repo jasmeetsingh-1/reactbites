@@ -71,7 +71,7 @@ const SignUpSlice = createSlice({
         const updatedItems = [...state.signupdata];
         updatedItems[indexOFItem] = newSignUpData;
         state.signupdata = [...updatedItems];
-        // look code from item already in cart and then manage stuff here bro
+        //here we need to update the data in login
       }
     },
   },

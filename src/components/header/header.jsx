@@ -36,7 +36,14 @@ function Header(props) {
       <div className="full-width-div">
         <div className="main-outer-div-header">
           <div className="heading-div-header">
-            <h2>REACTBITES</h2>
+            <h2
+              onClick={() => {
+                navigate("/");
+              }}
+              style={{ cursor: "pointer" }}
+            >
+              REACTBITES
+            </h2>
           </div>
           <div className="header-button-holder">
             <button className="header-buttons-navbar" onClick={props.openCart}>

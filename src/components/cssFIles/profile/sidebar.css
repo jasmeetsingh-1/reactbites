@@ -2,8 +2,8 @@
   width: max-content;
   /* border-right: 1px solid #858585; */
   padding: 1rem 2rem;
-  max-width: 23%;
-  min-width: 23%;
+  max-width: 30%;
+  min-width: 30%;
 }
 
 .profile-css-menu-active {
@@ -13,7 +13,7 @@
 .profile-css-menu-items {
   cursor: pointer;
   color: #858585;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 600;
   display: flex;
   gap: 1.7rem;
