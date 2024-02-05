@@ -29,6 +29,23 @@ const LoginSlice = createSlice({
       state.isloggedIn = action.payload.status;
       state.data = action.payload.userdata;
     },
+    addingOrderToLogin(state, action) {
+      //this function also adds the same order into the login data
+      //action payload will all be same
+      let loginData = { ...state.data };
+      const newOrder = {
+        orderId: loginData.orders.length + 1,
+        orderAddress: action.payload.orderAddress,
+        orderTotal: action.payload.orderTotal,
+        orderItems: action.payload.cartItems,
+      };
+      const newLoginData = {
+        ...loginData,
+        orders: [...loginData.orders, newOrder],
+      };
+
+      state.data = newLoginData;
+    },
   },
 });
 
@@ -49,11 +66,9 @@ const SignUpSlice = createSlice({
       state.signupdata = [...state.signupdata, newSignUp];
     },
     addToOrders(state, action) {
-      console.log("action payload>>>", action.payload);
       const indexOFItem = state.signupdata.findIndex(
         (item) => item.email === action.payload.loginEmail
       );
-      // console.log("data to update:>>>>", state.signupdata[indexOFItem]);
       let newSignUpData;
       if (indexOFItem !== -1) {
         const updatedSignUpdata = state.signupdata[indexOFItem];

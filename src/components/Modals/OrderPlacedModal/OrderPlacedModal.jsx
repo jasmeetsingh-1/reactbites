@@ -57,7 +57,7 @@ function OrderPlaced(props) {
       <div className="order-placed-modal-div-button">
         <div
           onClick={() => {
-            navigate("/");
+            navigate("/my_profile");
           }}
         >
           View your Profile

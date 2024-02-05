@@ -146,7 +146,7 @@ function LoginPage() {
 
     setTimeout(() => {
       navigate("/");
-    }, 1800);
+    }, 1000);
   }
 
   function emailCheckBeforeSignUp(email) {
