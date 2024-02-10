@@ -2,16 +2,22 @@ import React, { useEffect, useState } from "react";
 import "../cssFIles/orderForm/orderform.css";
 import { useSelector, useDispatch } from "react-redux";
 // import { ordersReducers } from "../redux-store/store";
-import { signUpReducers, loginReducers } from "../redux-store/store";
+import {
+  signUpReducers,
+  loginReducers,
+  cartItemReducers,
+} from "../redux-store/store";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import OrderPlaced from "../Modals/OrderPlacedModal/OrderPlacedModal";
+import { useNavigate } from "react-router-dom";
 
 function OrderForm() {
   const [OrderPlacedModal, setOrderPlacedModal] = useState(false);
   const signupData = useSelector((state) => state.signupStore.signupdata);
   const loginData = useSelector((state) => state.loginStore);
   const cartItems = useSelector((state) => state.cartStore);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const capitalizeFirstLetter = (str) => {
@@ -56,8 +62,8 @@ function OrderForm() {
     console.log("orderpaylad>>>>", orderPayload);
     setOrderPlacedModal(true);
     dispatch(signUpReducers.addToOrders(orderPayload));
-    // updatingLoginData(orderPayload.loginEmail);
     dispatch(loginReducers.addingOrderToLogin(orderPayload));
+    dispatch(cartItemReducers.cartItemClear());
     formik.resetForm();
   };
 

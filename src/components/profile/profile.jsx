@@ -14,7 +14,7 @@ import AboutUs from "./Aboutus";
 library.add(faEye);
 
 function MyProfile() {
-  const [activeMenu, setActiveMenu] = useState(1);
+  const [activeMenu, setActiveMenu] = useState(2);
   const [passwordChanging, setPasswordChanging] = useState(false);
   const [viewingPassword, setviewingPassword] = useState(false);
   const loginData = useSelector((state) => state.loginStore);
@@ -29,11 +29,6 @@ function MyProfile() {
     password: loginData.data.password,
     confirmpassword: loginData.data.password,
   };
-
-  useEffect(() => {
-    console.log("orders>>>", loginData.data.orders);
-    // setPasswordChanging(false);
-  }, []);
 
   return (
     <>

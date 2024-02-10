@@ -86,7 +86,6 @@ const SignUpSlice = createSlice({
         const updatedItems = [...state.signupdata];
         updatedItems[indexOFItem] = newSignUpData;
         state.signupdata = [...updatedItems];
-        //here we need to update the data in login
       }
     },
   },

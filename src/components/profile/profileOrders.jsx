@@ -1,10 +1,17 @@
 import amount_image from "../../assets/order_amount_profileModal.svg";
 import date_image from "../../assets/order_Date_profileModal.svg";
 import order_id_image from "../../assets/order_id_image_profileModal.svg";
-import { Table } from "react-bootstrap";
 import "../cssFIles/profile/profileOrders.css";
+import { Table } from "react-bootstrap";
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 
 function MyOrders() {
+  const loginData = useSelector((state) => state.loginStore);
+  const [showingOrder, setShowingOrder] = useState(0);
+  useEffect(() => {
+    console.log(loginData.data.orders.length);
+  }, []);
   return (
     <>
       <div className="profile-holder-outer-div">
@@ -18,7 +25,7 @@ function MyOrders() {
             />
             <div>
               <span>Order ID</span>
-              <p>#1</p>
+              <p>#{loginData.data.orders[showingOrder].orderId}</p>
             </div>
           </div>
           <div className="gradient-border">
@@ -42,7 +49,9 @@ function MyOrders() {
             />
             <div>
               <span>Total Amount</span>
-              <p style={{ color: "#962000" }}>₹690</p>
+              <p style={{ color: "#962000" }}>
+                ₹{loginData.data.orders[showingOrder].orderTotal}
+              </p>
             </div>
           </div>
           <div style={{ justifyContent: "center" }}>
@@ -51,7 +60,10 @@ function MyOrders() {
             </button>
           </div>
         </div>
-        <div className="profile-modal-right-holder">
+        <div
+          className="profile-modal-right-holder"
+          style={{ position: "relative" }}
+        >
           <div>
             <span>Delivered At</span>
 
@@ -61,20 +73,26 @@ function MyOrders() {
                   <tr>
                     <td className="no-boder-table-tr-bootstrap">Name:</td>
                     <td className="no-boder-table-tr-bootstrap">
-                      Jasmeet Singh
+                      {loginData.data.orders[showingOrder].orderAddress.name}
                     </td>
                   </tr>
                   <tr>
                     <td className="no-boder-table-tr-bootstrap">
                       Contact No.:
                     </td>
-                    <td className="no-boder-table-tr-bootstrap">9877998276</td>
+                    <td className="no-boder-table-tr-bootstrap">
+                      {
+                        loginData.data.orders[showingOrder].orderAddress
+                          .phonenumber
+                      }
+                    </td>
                   </tr>
                   <tr>
                     <td className="no-boder-table-tr-bootstrap">Address:</td>
                     <td className="no-boder-table-tr-bootstrap">
-                      262B, Guru Arjan Dev Nagar, near Putlighar, Amritsar,
-                      Punjab
+                      {loginData.data.orders[showingOrder].orderAddress.address}{" "}
+                      , {loginData.data.orders[showingOrder].orderAddress.city}{" "}
+                      , {loginData.data.orders[showingOrder].orderAddress.state}
                     </td>
                   </tr>
                 </tbody>
@@ -83,24 +101,54 @@ function MyOrders() {
           </div>
           <div>
             <span>Cart items</span>
-            <div className="cart-item-holder-profileModal">
-              <div className="amount-holder-cart-item-profileModal">x1</div>
-              <div>Chicken Lemon Coriander Soup</div>
-              <div style={{ color: "#962000" }}>₹345</div>
-            </div>
-            <div className="cart-item-holder-profileModal">
-              <div className="amount-holder-cart-item-profileModal">x1</div>
-              <div>Chicken Lemon Coriander Soup</div>
-              <div style={{ color: "#962000" }}>₹345</div>
-            </div>
+            {loginData.data.orders[showingOrder].orderItems.map((item) => {
+              return (
+                <div className="cart-item-holder-profileModal">
+                  <div className="amount-holder-cart-item-profileModal">
+                    x{item.amount}
+                  </div>
+                  <div>{item.name}</div>
+                  <div style={{ color: "#962000" }}>₹{item.price}</div>
+                </div>
+              );
+            })}
+
             <div
               className="cart-item-holder-profileModal"
               style={{ borderTop: "1px solid black", padding: "14px 0 0 0 " }}
             >
-              <div style={{ fontWeight: "800", width: "90%" }}>SubTotal</div>
-              <div style={{ color: "#962000" }}>₹690</div>
+              <div style={{ fontWeight: "800", width: "80%" }}>SubTotal</div>
+              <div style={{ color: "#962000" }}>
+                ₹{loginData.data.orders[showingOrder].orderTotal}
+              </div>
             </div>
           </div>
+          {loginData.data.orders.length > 1 &&
+          showingOrder < loginData.data.orders.length - 1 ? (
+            <span
+              className="show-orders-next-button"
+              onClick={() => {
+                setShowingOrder(showingOrder + 1);
+              }}
+            >
+              Next
+            </span>
+          ) : (
+            ""
+          )}
+          {loginData.data.orders.length > 1 && showingOrder != 0 ? (
+            <span
+              className="show-orders-next-button"
+              style={{ left: "80%" }}
+              onClick={() => {
+                setShowingOrder(showingOrder - 1);
+              }}
+            >
+              Prev
+            </span>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </>
