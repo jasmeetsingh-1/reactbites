@@ -24,6 +24,11 @@ function OrderForm() {
     return str.charAt(0).toUpperCase() + str.slice(1);
   };
 
+  useEffect(() => {
+    if (cartItems.totalAmount == 0) {
+      navigate("/");
+    }
+  }, []);
   const initialValues = {
     name: loginData.data.name,
     email: loginData.data.email,
