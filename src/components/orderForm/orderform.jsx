@@ -101,7 +101,10 @@ function OrderForm() {
                     value={capitalizeFirstLetter(loginData.data.name)}
                     disabled
                     placeholder="ENTER YOUR NAME"
-                    style={{ cursor: "not-allowed", color: "#ffffffab" }}
+                    style={{
+                      cursor: "not-allowed",
+                      color: "#ffffffab",
+                    }}
                     onChange={formik.handleChange}
                   />
                 </div>
@@ -113,11 +116,13 @@ function OrderForm() {
                   <input
                     name="email"
                     id="email"
-                    // value={capitalizeFirstLetter(loginData.data.name)}
                     value={formik.values.email}
                     disabled
                     placeholder="ENTER YOUR EMAIL"
-                    style={{ cursor: "not-allowed", color: "#ffffffab" }}
+                    style={{
+                      cursor: "not-allowed",
+                      color: "#ffffffab",
+                    }}
                     onChange={formik.handleChange}
                   />
                 </div>
