@@ -92,7 +92,10 @@ function OrderForm() {
             <form onSubmit={formik.handleSubmit}>
               <div className="input-holder-orderform invalid-form-holder">
                 <div className="invalid-field-holder-orderform">
-                  <label htmlFor="username">
+                  <label
+                    htmlFor="username"
+                    style={{ position: "relative", top: "-20px" }}
+                  >
                     NAME<span style={{ color: "red" }}>*</span>
                   </label>
                   <input
@@ -104,13 +107,17 @@ function OrderForm() {
                     style={{
                       cursor: "not-allowed",
                       color: "#ffffffab",
+                      position: "absolute",
                     }}
                     onChange={formik.handleChange}
                   />
                 </div>
 
                 <div className="invalid-field-holder-orderform">
-                  <label htmlFor="email">
+                  <label
+                    htmlFor="email"
+                    style={{ position: "relative", top: "-20px" }}
+                  >
                     EMAIL<span style={{ color: "red" }}>*</span>
                   </label>
                   <input
