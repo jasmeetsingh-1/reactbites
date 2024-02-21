@@ -11,9 +11,11 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import OrderPlaced from "../Modals/OrderPlacedModal/OrderPlacedModal";
 import { useNavigate } from "react-router-dom";
+import PaymentModal from "../Modals/paymentModal";
 
 function OrderForm() {
   const [OrderPlacedModal, setOrderPlacedModal] = useState(false);
+  const [paymentModal, setPaymentModal] = useState(false);
   const signupData = useSelector((state) => state.signupStore.signupdata);
   const loginData = useSelector((state) => state.loginStore);
   const cartItems = useSelector((state) => state.cartStore);
@@ -65,7 +67,7 @@ function OrderForm() {
       cartItems: cartItems.cart,
     };
     console.log("orderpaylad>>>>", orderPayload);
-    setOrderPlacedModal(true);
+    setPaymentModal(true);
     dispatch(signUpReducers.addToOrders(orderPayload));
     dispatch(loginReducers.addingOrderToLogin(orderPayload));
     dispatch(cartItemReducers.cartItemClear());
@@ -213,13 +215,22 @@ function OrderForm() {
           </div>
         </div>
       </div>
+      <PaymentModal
+        showModal={paymentModal}
+        onHide={() => {
+          setPaymentModal(false);
+        }}
+        showPaymentModal={() => {
+          setPaymentModal(false);
+          setOrderPlacedModal(true);
+        }}
+      />
       <OrderPlaced
         show={OrderPlacedModal}
         onHide={() => {
           setOrderPlacedModal(false);
         }}
       />
-      {/* <Footer /> */}
     </>
   );
 }

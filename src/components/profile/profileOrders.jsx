@@ -54,11 +54,11 @@ function MyOrders() {
               </p>
             </div>
           </div>
-          <div style={{ justifyContent: "center" }}>
+          {/* <div style={{ justifyContent: "center" }}>
             <button className="order-again-image-profilModal">
               ORDER AGAIN
             </button>
-          </div>
+          </div> */}
         </div>
         <div
           className="profile-modal-right-holder"

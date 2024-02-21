@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { Modal } from "react-bootstrap";
-import "../modals/ModalsCssFiles/paymentModal.css";
+import "./cssFiles/paymentModal.css";
 import Lottie from "lottie-react";
-import paymentAnnimation from "../../assets/animations/arrowPaymentAnnimation.json";
+import paymentAnnimation from "../../assets/arrowPaymentAnnimation.json";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import backButton from "../../assets/back-svgrepo-com.svg";
+import backButton from "../../assets/back-arrow-svgrepo-com.svg";
+import closeButton from "../../assets/close-svgrepo-com.svg";
+import {
+  signUpReducers,
+  loginReducers,
+  cartItemReducers,
+} from "../redux-store/store";
 
 function PaymentModal({ showModal, onHide, showPaymentModal }) {
   const [paymentOption, setPaymentOption] = useState("none");
@@ -67,13 +73,20 @@ function PaymentModal({ showModal, onHide, showPaymentModal }) {
     { label: 12, value: "December" },
   ];
 
+  //   const payButtonHandle = () => {
+  //     dispatch(signUpReducers.addToOrders(orderPayload));
+  //     dispatch(loginReducers.addingOrderToLogin(orderPayload));
+  //     dispatch(cartItemReducers.cartItemClear());
+  //   };
+
   const expYearOption = [2023, 2024, 2025, 2026, 2027, 2028, 2029];
   return (
     <>
-           {" "}
       <Modal show={showModal} onHide={onHide}>
-               
-        <Modal.Header closeButton className="payment-modal-heading-section">
+        <Modal.Header
+          className="payment-modal-heading-section"
+          style={{ display: "flex", alignItems: "center" }}
+        >
           <div
             style={{ cursor: "pointer" }}
             onClick={() => {
@@ -83,8 +96,16 @@ function PaymentModal({ showModal, onHide, showPaymentModal }) {
             <img src={backButton} alt="back button" width="20px" />
           </div>
           <span className="payment-option-heading">Choose your payment</span>
+          <div
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              onHide();
+            }}
+          >
+            <img src={closeButton} alt="close button" width="20px" />
+          </div>
         </Modal.Header>
-               
+
         <Modal.Body className="payment-modal-heading-section">
           <div className="modal-body-holder">
             {paymentOption === "none" ? (
@@ -168,7 +189,7 @@ function PaymentModal({ showModal, onHide, showPaymentModal }) {
                   onSubmit={(values, { resetForm }) => {
                     console.log("form submitted");
                     console.log({ values });
-                    setotpButtonClicked(true);
+                    setOtpButtonClicked(true);
                   }}
                 >
                   {({
@@ -384,7 +405,7 @@ function PaymentModal({ showModal, onHide, showPaymentModal }) {
                                   e.preventDefault();
                                   if (otpValue === "1234") {
                                     toast.success("OTP verified", toastConfig);
-                                    setotpvalidated(true);
+                                    setOtpValidated(true);
                                   } else {
                                     toast.error("Invalid OTP", toastConfig);
                                   }
