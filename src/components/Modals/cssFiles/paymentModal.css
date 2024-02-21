@@ -1,0 +1,124 @@
+.modal-body-holder {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0.3rem 1rem;
+}
+
+.payment-modal-heading-section {
+  padding: 0.5rem 1rem !important;
+}
+
+.modal-body-holder > button,
+.netbanking-holder-div > button {
+  text-align: left;
+  outline: none;
+  border: none;
+  font-size: larger;
+  border-radius: 10px;
+  padding: 2px 37px;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+}
+.selected-payment-option {
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.19) inset;
+}
+
+.modal-body-holder > button:hover {
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.19) inset;
+}
+
+.payment-option-heading {
+  font-size: x-large;
+  font-weight: 500;
+  padding-left: 7px;
+}
+.form-holder-netbanking {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.netbanking-form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.field-netbanking-form {
+  outline: none;
+  padding: 0.5rem 1rem;
+  border: 1px solid lightgrey;
+  border-radius: 8px;
+  position: relative;
+}
+
+.netbanking-col {
+  display: flex;
+}
+
+.netbanking-form-row-two-cols {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.netbanking-form-row-two-cols > div {
+  width: 50%;
+}
+
+.select-options-netbanking {
+  border: none;
+  outline: none;
+  border: 1px solid lightgrey;
+  border-radius: 8px;
+  padding: 0.5rem;
+  width: 45%;
+  margin: 0px 1px;
+}
+
+.select-options-netbanking > option {
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.select-options-netbanking > option:hover {
+  background-color: grey;
+}
+
+.get-Otp-button-netbanking {
+  font-size: medium;
+  padding: 7px 2rem;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background-color: rgb(56, 71, 154);
+  color: white;
+  margin-top: 1rem;
+}
+
+.netbanking-col-cvv {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.netbanking-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 700;
+  font-size: larger;
+}
+
+.netbanking-heading > span {
+  font-weight: 400;
+  font-size: small;
+  font-style: italic;
+}
+
+.formik-error-netbanking-form {
+  color: red;
+  position: absolute;
+  right: 33px;
+  font-size: smaller;
+}
