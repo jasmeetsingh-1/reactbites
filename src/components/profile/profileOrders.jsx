@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import NoOrders from "../Modals/noOrder";
 
-function MyOrders() {
+function MyOrders(props) {
   const loginData = useSelector((state) => state.loginStore);
   const [showingOrder, setShowingOrder] = useState(0);
   useEffect(() => {
@@ -159,7 +159,7 @@ function MyOrders() {
           </div>
         </div>
       ) : (
-        <NoOrders />
+        <NoOrders setActiveMenu={props.setActiveMenu} />
       )}
     </>
   );
