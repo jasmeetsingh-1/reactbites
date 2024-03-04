@@ -74,28 +74,6 @@ function LoginPage() {
   }
 
   function loginFormHandler(key) {
-    // if (key === "afterSignUp") {
-    //   setLoginFormData({
-    //     ...loginFormData,
-    //     usernamelogin: signUpFormData.username,
-    //     passwordlogin: signUpFormData.password,
-    //   });
-    //   const userdata = signupData.find((data) => {
-    //     return (
-    //       data.username === loginFormData.usernamelogin &&
-    //       data.password === loginFormData.passwordlogin
-    //     );
-    //   });
-
-    //   console.log(userdata);
-    //   toast.success("Login Successful", toastConfig);
-    //   dispatch(
-    //     loginReducers.loginButtonHandlerReducers({
-    //       status: true,
-    //       userdata: userdata,
-    //     })
-    //   );
-    // } else {
     if (loginFormData.usernamelogin.length === 0) {
       toast.warn("Please enter username", toastConfig);
       return;
@@ -194,6 +172,20 @@ function LoginPage() {
     return ans;
   }
 
+  function passwordSignUpChecker(password) {
+    //one number, one capital, one special character
+    if (!/\d/.test(password)) {
+      return "Password must have number.";
+    }
+    if (!/[A-Z]/.test(password)) {
+      return "Password must have a capital.";
+    }
+    if (!/[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]/.test(password)) {
+      return "Password must contain a special character.";
+    }
+
+    return "password Valid";
+  }
   function signUpFormHandler() {
     if (
       signUpFormData.username.length === 0 ||
@@ -220,6 +212,11 @@ function LoginPage() {
     }
     if (signUpFormData.confirmpassword !== signUpFormData.password) {
       toast.error("Password and Confirm password must match", toastConfig);
+      return;
+    }
+    const passwordError = passwordSignUpChecker(signUpFormData.password);
+    if (passwordError != "password Valid") {
+      toast.error(passwordError, toastConfig);
       return;
     }
     if (signUpFormData.password < 6) {
