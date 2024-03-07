@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import "../cssFIles/login/loginPage.css";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 // import image from "../../assets/welcomefood.jpg";
 // import image from "../../assets/welcomefood.svg";
 function LoginPage() {
@@ -72,6 +73,22 @@ function LoginPage() {
 
     return flag;
   }
+
+  // useEffect(() => {
+  //   var headers = new Headers();
+  //   headers.append("X-CSCAPI-KEY", "API_KEY");
+
+  //   var requestOptions = {
+  //     method: "GET",
+  //     headers: headers,
+  //     redirect: "follow",
+  //   };
+
+  //   fetch("", requestOptions)
+  //     .then((response) => response.text())
+  //     .then((result) => console.log(result))
+  //     .catch((error) => console.log("error", error));
+  // }, []);
 
   function loginFormHandler(key) {
     if (loginFormData.usernamelogin.length === 0) {
