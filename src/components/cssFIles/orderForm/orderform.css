@@ -164,6 +164,10 @@ input::-webkit-inner-spin-button {
     margin: 0 0.2rem 1rem;
   }
 
+  .email-field-holder-orderForm > label {
+    top: 11px !important;
+  }
+
   .outer-order-form-holder > div {
     width: 100%;
   }

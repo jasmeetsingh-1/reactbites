@@ -178,12 +178,18 @@
   }
   .profile-holder-outer-div {
     flex-direction: column;
+    padding: 3rem 1rem;
+    border-top: 1px solid #858585;
+    align-items: center;
+  }
+  .profile-modal-right-holder {
+    width: 100%;
   }
   .cart-item-holder-profileModal {
     flex-wrap: nowrap;
   }
   .profile-modal-left-holder {
     flex-wrap: nowrap;
-    width: 70%;
+    width: 100%;
   }
 }

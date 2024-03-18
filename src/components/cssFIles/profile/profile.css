@@ -108,3 +108,22 @@
   position: absolute;
   right: 0;
 }
+
+@media screen and (max-width: 768px) {
+  .profile-css-main-div {
+    min-width: 100%;
+    max-width: 100%;
+    flex-direction: column;
+  }
+
+  .profile-css-menu-div-holder {
+    min-width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .profile-css-form-div-holder {
+    width: 100%;
+    padding: 1rem;
+    border-top: 1px solid #858585;
+  }
+}

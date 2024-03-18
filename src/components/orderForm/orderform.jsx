@@ -115,7 +115,7 @@ function OrderForm() {
                   />
                 </div>
 
-                <div className="invalid-field-holder-orderform">
+                <div className="invalid-field-holder-orderform email-field-holder-orderForm">
                   <label
                     htmlFor="email"
                     style={{ position: "relative", top: "-20px" }}
