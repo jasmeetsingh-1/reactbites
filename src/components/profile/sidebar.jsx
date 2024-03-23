@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import "../cssFIles/profile/sidebar.css";
+import { useNavigate } from "react-router-dom";
 
 function Sidebar({ activeMenu, setActiveMenu }) {
   // const [activeMenu, setActiveMenu] = useState(1);
+  const navigate = useNavigate();
   return (
     <div className="profile-css-menu-div-holder">
       <div>
@@ -109,6 +111,13 @@ function Sidebar({ activeMenu, setActiveMenu }) {
           About Us
         </div> */}
       </div>
+      <button
+        onClick={() => {
+          navigate("/");
+        }}
+      >
+        Go to Home Page
+      </button>
     </div>
   );
 }

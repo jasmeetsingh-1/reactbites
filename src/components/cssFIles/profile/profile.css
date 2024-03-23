@@ -16,7 +16,7 @@
   width: 70%;
   height: max-content;
   border-left: 1px solid #858585;
-  padding: 1rem 5rem;
+  padding: 1rem 2rem;
 }
 
 .profile-change-div-heading {
@@ -117,13 +117,13 @@
   }
 
   .profile-css-menu-div-holder {
-    min-width: 100% !important;
-    max-width: 100% !important;
+    min-width: 85% !important;
+    max-width: 85% !important;
   }
 
   .profile-css-form-div-holder {
-    width: 100%;
-    padding: 1rem;
+    width: 85%;
+    /* padding: 1rem; */
     border-top: 1px solid #858585;
   }
 }

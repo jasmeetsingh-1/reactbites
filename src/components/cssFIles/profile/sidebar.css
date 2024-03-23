@@ -4,6 +4,25 @@
   padding: 1rem 2rem;
   min-width: 27%;
   max-width: 27%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile-css-menu-div-holder > button {
+  width: 70%;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #4d1601d1;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.profile-css-menu-div-holder > button:hover {
+  background-color: #4d1601;
 }
 
 .profile-css-menu-active {

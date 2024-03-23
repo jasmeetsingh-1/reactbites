@@ -61,7 +61,7 @@ function MyProfile() {
                     <Form>
                       <div
                         className="profile-edit-form-row"
-                        style={{ flexDirection: "row", gap: "2rem" }}
+                        style={{ flexDirection: "row", gap: "1rem" }}
                       >
                         <div className="width-div-container-profile-css">
                           <label htmlFor="name">Name</label>
