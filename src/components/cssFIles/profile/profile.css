@@ -114,6 +114,7 @@
     min-width: 100%;
     max-width: 100%;
     flex-direction: column;
+    align-items: center;
   }
 
   .profile-css-menu-div-holder {
@@ -125,5 +126,6 @@
     width: 85%;
     /* padding: 1rem; */
     border-top: 1px solid #858585;
+    border-left: 0;
   }
 }

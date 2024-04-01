@@ -46,6 +46,10 @@ const LoginSlice = createSlice({
 
       state.data = newLoginData;
     },
+    logoutButtonHandler(state) {
+      state.isloggedIn = false;
+      state.data = {};
+    },
   },
 });
 
