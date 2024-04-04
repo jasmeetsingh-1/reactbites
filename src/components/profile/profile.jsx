@@ -10,6 +10,7 @@ import MyProfileAnimation from "../../assets/my_profile_annimation.json";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import MyOrders from "./profileOrders";
 import AboutUs from "./Aboutus";
+import * as Yup from "yup";
 
 library.add(faEye);
 
@@ -30,6 +31,21 @@ function MyProfile() {
     confirmpassword: loginData.data.password,
   };
 
+  const validationEditProfile = Yup.object({
+    name: Yup.string().required("Please enter your name"),
+    username: Yup.string().required("Please enter your username"),
+    email: Yup.string().required("Please enter your email"),
+    phonenumber: Yup.string()
+      .required("Please enter your phonenumber")
+      .min(10, "Phone number must be 10 digits")
+      .max(10, "Phone number must be 10 digits"),
+    password: Yup.string()
+      .required("Please enter password")
+      .min(6, "Password must be more then 6 character"),
+    confirmpassword: Yup.string()
+      .oneOf([Yup.ref("password"), null], "Passwords must match")
+      .required("Please confirm password"),
+  });
   return (
     <>
       <div
@@ -53,11 +69,12 @@ function MyProfile() {
               <div className="profile-change-div-form">
                 <Formik
                   initialValues={initialValues}
+                  validationSchema={validationEditProfile}
                   onSubmit={(values) => {
                     console.log("values", values);
                   }}
                 >
-                  {({ values, handleChange }) => (
+                  {({ values, errors, touched }) => (
                     <Form>
                       <div
                         className="profile-edit-form-row"
@@ -66,6 +83,13 @@ function MyProfile() {
                         <div className="width-div-container-profile-css">
                           <label htmlFor="name">Name</label>
                           <Field name="name" id="name" value={values.name} />
+                          {errors.name && touched.name ? (
+                            <span className="error-class-profile">
+                              {errors.name}
+                            </span>
+                          ) : (
+                            ""
+                          )}
                         </div>
                         <div className="width-div-container-profile-css">
                           <label htmlFor="username">Username</label>
@@ -97,12 +121,19 @@ function MyProfile() {
                       />
                     </div> */}
                       <div className="profile-edit-form-row">
-                        <label htmlFor="phonenumber">Contact Number</label>
+                        <label htmlFor="phonenumber">Phone Number</label>
                         <Field
                           name="phonenumber"
                           id="phonenumber"
                           value={values.phonenumber}
                         />
+                        {errors.phonenumber && touched.phonenumber ? (
+                          <span className="error-class-profile">
+                            {errors.phonenumber}
+                          </span>
+                        ) : (
+                          ""
+                        )}
                       </div>
                       {/* <div
                       className="profile-edit-form-row"
@@ -125,7 +156,9 @@ function MyProfile() {
                         >
                           <div
                             className="width-div-container-profile-css"
-                            style={{ position: "relative" }}
+                            style={{
+                              position: "relative",
+                            }}
                           >
                             <FontAwesomeIcon
                               icon={faEye}
@@ -146,6 +179,13 @@ function MyProfile() {
                               id="password"
                               value={values.password}
                             />
+                            {errors.password && touched.password ? (
+                              <span className="error-class-profile password-errors-profile">
+                                {errors.password}
+                              </span>
+                            ) : (
+                              ""
+                            )}
                           </div>
                           <div
                             className="width-div-container-profile-css"
@@ -160,6 +200,14 @@ function MyProfile() {
                               id="confirmpassword"
                               value={values.confirmpassword}
                             />
+                            {errors.confirmpassword &&
+                            touched.confirmpassword ? (
+                              <span className="password-errors-profile error-class-profile">
+                                {errors.confirmpassword}
+                              </span>
+                            ) : (
+                              ""
+                            )}
                           </div>
                         </div>
                       ) : (

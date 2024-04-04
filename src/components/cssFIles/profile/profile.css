@@ -31,6 +31,7 @@
   margin-top: 10px;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .profile-edit-form-row > label {
@@ -81,6 +82,7 @@
   width: 47%;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .profile-edit-submit-button {
@@ -107,6 +109,19 @@
 .profile-annimation-holder-div {
   position: absolute;
   right: 0;
+}
+
+.error-class-profile {
+  position: absolute;
+  top: 8px;
+  font-size: x-small;
+  right: 5px;
+  color: red;
+}
+
+.password-errors-profile {
+  top: inherit;
+  bottom: -17px;
 }
 
 @media screen and (max-width: 768px) {

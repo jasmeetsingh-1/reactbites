@@ -92,6 +92,13 @@ const SignUpSlice = createSlice({
         state.signupdata = [...updatedItems];
       }
     },
+    editProfile(state, action) {
+      //action payload
+      console.log(action.payload);
+      const indexOFItem = state.signupdata.findIndex(
+        (item) => item.email === action.payload.email
+      );
+    },
   },
 });
 

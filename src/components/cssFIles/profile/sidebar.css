@@ -13,7 +13,7 @@
 .sidebar-button-holder {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 7px;
 }
 
 .sidebar-button-holder button:nth-child(1) {
